@@ -32,7 +32,7 @@ export default function Cart() {
     <>
       <Sheet>
         <SheetTrigger asChild>
-          <Button variant="outline" size="icon" className="relative">
+          <Button variant="default" size="icon" className="relative">
             <ShoppingCart className="h-4 w-4" />
             {items.length > 0 && (
               <span className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-amber-600 text-xs text-white">
@@ -51,7 +51,7 @@ export default function Cart() {
           <div className="mt-6 space-y-6">
             {Object.entries(groupedItems).map(([serviceTitle, serviceItems]) => (
               <div key={serviceTitle} className="space-y-4">
-                <h3 className="text-lg font-semibold">{serviceTitle}</h3>
+                <h3 className="text-lg font-semibold text-foreground">{serviceTitle}</h3>
                 {serviceItems.map((item) => (
                   <CartItem key={`${item.serviceId}-${item.subServiceTitle}-${item.name}`} item={item} />
                 ))}
@@ -59,8 +59,8 @@ export default function Cart() {
             ))}
           </div>
           <div className="mt-6 flex justify-between border-t border-zinc-700 pt-4">
-            <span className="text-lg font-semibold">Total:</span>
-            <span className="text-lg font-semibold">${total.toFixed(2)}</span>
+            <span className="text-lg font-semibold text-foreground">Total:</span>
+            <span className="text-lg font-semibold text-foreground">${total.toFixed(2)}</span>
           </div>
           <div className="mt-6 space-y-4">
             <Button

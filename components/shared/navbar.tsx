@@ -111,9 +111,6 @@ export default function Navbar() {
 
         <div className="flex items-center gap-4">
           <Cart />
-          <Button variant="outline" className="hidden md:inline-flex border-zinc-700 text-zinc-400 hover:text-white">
-            Empezar
-          </Button>
         </div>
       </div>
     </nav>

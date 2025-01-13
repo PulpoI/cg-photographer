@@ -138,6 +138,122 @@ export const services: Record<string, Service> = {
       }
     ]
   },
-  // Agrega más servicios aquí...
+  infantiles: {
+    id: 'infantiles',
+    title: 'Infantiles',
+    shortDescription: 'Capturando momentos únicos en tu infancia',
+    longDescription: 'Nuestro servicio de fotografía infantil está diseñado para capturar cada momento especial de tu infancia. Desde los preparativos hasta el último baile, estaremos allí para documentar cada emoción, cada sonrisa y cada detalle que hace único tu día.',
+    subServices: [
+      {
+        title: 'Sesión de Fotos',
+        packages: [
+          {
+            name: 'Básico',
+            price: 800,
+            features: [
+              '2 horas de sesión',
+              '50 fotos editadas',
+              'Entrega digital'
+            ]
+          }
+        ]
+      },
+      {
+        title: 'Fiesta',
+        packages: [
+          {
+            name: 'Clásico',
+            price: 2000,
+            features: [
+              '6 horas de cobertura',
+              '200 fotos editadas',
+              'Video highlights',
+              'Álbum digital'
+            ]
+          }
+        ]
+      },
+      {
+        title: 'Cumpleaños',
+        packages: [
+          {
+            name: 'Básico',
+            price: 800,
+            features: [
+              '2 horas de sesión',
+              '50 fotos editadas',
+              'Entrega digital'
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  eventos: {
+    id: 'eventos',
+    title: 'Eventos',
+    shortDescription: 'Capturando momentos únicos en tu evento',
+    longDescription: 'Nuestro servicio de fotografía para eventos está diseñado para capturar cada momento especial de tu evento. Desde los preparativos hasta el último baile, estaremos allí para documentar cada emoción, cada sonrisa y cada detalle que hace único tu día.',
+    subServices: [
+      {
+        title: 'Evento',
+        packages: [
+          {
+            name: 'Básico',
+            price: 800,
+            features: [
+              '2 horas de sesión',
+              '50 fotos editadas',
+              'Entrega digital'
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  cumpleanos: {
+    id: 'cumpleanos',
+    title: 'Cumpleaños',
+    shortDescription: 'Capturando momentos únicos en tu cumpleaños',
+    longDescription: 'Nuestro servicio de fotografía para cumpleaños está diseñado para capturar cada momento especial de tu cumpleaños. Desde los preparativos hasta el último baile, estaremos allí para documentar cada emoción, cada sonrisa y cada detalle que hace único tu día.',
+    subServices: [
+      {
+        title: 'Cumpleaños',
+        packages: [
+          {
+            name: 'Básico',
+            price: 800,
+            features: [
+              '2 horas de sesión',
+              '50 fotos editadas',
+              'Entrega digital'
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  corporativo: {
+    id: 'corporativo',
+    title: 'Corporativo',
+    shortDescription: 'Capturando momentos únicos en tu evento',
+    longDescription: 'Nuestro servicio de fotografía para eventos está diseñado para capturar cada momento especial de tu evento. Desde los preparativos hasta el último baile, estaremos allí para documentar cada emoción, cada sonrisa y cada detalle que hace único tu día.',
+    subServices: [
+      {
+        title: 'Evento',
+        packages: [
+          {
+            name: 'Básico',
+            price: 800,
+            features: [
+              '2 horas de sesión',
+              '50 fotos editadas',
+              'Entrega digital'
+            ]
+          }
+        ]
+      }
+    ]
+  }
 }
 

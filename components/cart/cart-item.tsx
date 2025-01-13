@@ -18,12 +18,12 @@ export default function CartItem({ item }: CartItemProps) {
   return (
     <div className="flex items-center justify-between">
       <div>
-        <h4 className="font-semibold">{item.serviceTitle}</h4>
-        <p className="text-sm text-zinc-400">{item.subServiceTitle} - {item.name}</p>
+        {/* <h4 className="font-semibold text-foreground">{item.serviceTitle}</h4> */}
+        <p className="text-sm text-foreground">{item.subServiceTitle} - {item.name}</p>
         <p className="text-amber-600">${item.price.toFixed(2)}</p>
       </div>
       <Button
-        variant="ghost"
+        variant="default"
         size="icon"
         onClick={() => removeItem(`${item.serviceId}-${item.subServiceTitle}-${item.name}`)}
       >
