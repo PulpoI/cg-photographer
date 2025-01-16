@@ -5,7 +5,7 @@ import ContactMap from '@/components/contact/contact-map'
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main className="min-h-screen bg-text-stone-850 text-white">
       <PageHero 
         title="Contacto" 
         breadcrumb="Contacto"

@@ -1,3 +1,6 @@
+'use client'
+import { useEffect } from 'react'
+import { initLenis } from './lib/lenis'
 import { Inter } from 'next/font/google'
 import Navbar from '@/components/shared/navbar'
 import Footer from '@/components/shared/footer'
@@ -13,9 +16,17 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  useEffect(() => {
+    const lenis = initLenis()
+    
+    return () => {
+      lenis.destroy()
+    }
+  }, [])
+
   return (
     <html lang="es">
-      <body className={`${inter.className} min-h-screen bg-black text-white`}>
+      <body className={`${inter.className} min-h-screen bg-amber-50 text-stone-850`}>
         <CartProvider>
           <div className="flex min-h-screen flex-col">
             <Navbar />

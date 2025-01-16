@@ -35,12 +35,12 @@ export default function Dashboard() {
     router.push('/admin/login')
   }
 
-  if (loading) return <div className="min-h-screen bg-black text-white flex items-center justify-center">Cargando...</div>
+  if (loading) return <div className="min-h-screen bg-text-stone-850 text-white flex items-center justify-center">Cargando...</div>
 
   if (!user) return null
 
   return (
-    <div className="min-h-screen bg-black text-white p-8">
+    <div className="min-h-screen bg-text-stone-850 text-white p-8">
       <div className="mb-8 flex items-center justify-between">
         <h1 className="text-2xl font-bold">Dashboard de Administración</h1>
         <Button

@@ -6,7 +6,7 @@ import AboutTestimonials from '@/components/about/about-testimonials'
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main className="min-h-screen bg-text-stone-850 text-white">
       <AboutHero />
       <AboutCapturing />
       <AboutSkills />

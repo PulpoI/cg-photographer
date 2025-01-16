@@ -4,8 +4,6 @@ import { Facebook, Twitter, Instagram, Youtube, Linkedin } from 'lucide-react'
 export default function Hero() {
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-zinc-900 via-black to-black" />
       
       {/* Content */}
       <div className="container relative px-4 text-center">
