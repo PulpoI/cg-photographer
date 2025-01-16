@@ -49,7 +49,7 @@ export default function Navbar() {
           Servicios
         </Link>
         <div className={cn(
-          "absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-zinc-900 ring-1 ring-black ring-opacity-5",
+          "absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-zinc-900 ring-1 ring-text-stone-850 ring-opacity-5",
           "transition-all duration-300 opacity-0 invisible group-hover:opacity-100 group-hover:visible",
           mobile ? "static mt-2 opacity-100 visible" : ""
         )}>
@@ -80,7 +80,7 @@ export default function Navbar() {
     <nav
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled ? "bg-black/70 backdrop-blur-md" : "bg-transparent"
+        isScrolled ? "bg-text-stone-850/70 backdrop-blur-md" : "bg-transparent"
       )}
     >
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
@@ -101,7 +101,7 @@ export default function Navbar() {
                 <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-full bg-black p-0">
+            <SheetContent side="right" className="w-full bg-text-stone-850 p-0">
               <nav className="flex flex-col items-center gap-8 p-6 pt-20">
                 <NavItems mobile />
               </nav>

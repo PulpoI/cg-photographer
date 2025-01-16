@@ -42,7 +42,7 @@ export default function AboutTestimonials() {
   }
 
   return (
-    <section className="bg-black py-20">
+    <section className="bg-text-stone-850 py-20">
       <div className="container px-4">
         <div className="mb-12 text-center">
           <span className="text-amber-600">Testimonials</span>

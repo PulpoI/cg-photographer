@@ -35,7 +35,7 @@ export default function RequestQuoteForm({ onClose }: RequestQuoteFormProps) {
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-text-stone-850 bg-opacity-50">
       <div className="w-full max-w-md rounded-lg bg-zinc-900 p-6">
         <h2 className="mb-4 text-2xl font-bold">Solicitar Presupuesto</h2>
         <form onSubmit={handleSubmit} className="space-y-4">

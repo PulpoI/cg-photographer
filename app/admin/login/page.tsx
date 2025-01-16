@@ -45,14 +45,14 @@ export default function Login() {
 
   if (loading) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-black">
+      <div className="flex min-h-screen items-center justify-center bg-text-stone-850">
         <div className="text-white">Cargando...</div>
       </div>
     )
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-black">
+    <div className="flex min-h-screen items-center justify-center bg-text-stone-850">
       <div className="w-full max-w-md rounded-lg bg-zinc-900 p-8 shadow-md">
         <h1 className="mb-6 text-2xl font-bold text-white">Iniciar sesión</h1>
         {error && <p className="mb-4 text-amber-600">{error}</p>}

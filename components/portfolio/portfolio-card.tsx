@@ -1,9 +1,11 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { motion, useSpring, useMotionValue, useTransform } from 'framer-motion'
 import { Button } from '@/components/ui/button'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 interface Project {
   id: number
@@ -19,6 +21,8 @@ interface PortfolioCardProps {
   onSelect: () => void
 }
 
+gsap.registerPlugin(ScrollTrigger)
+
 export default function PortfolioCard({ project, onSelect }: PortfolioCardProps) {
   const [isFlipped, setIsFlipped] = useState(false)
   const x = useMotionValue(0)
@@ -28,6 +32,30 @@ export default function PortfolioCard({ project, onSelect }: PortfolioCardProps)
   const springConfig = { damping: 15, stiffness: 150 }
   const rotateXSpring = useSpring(rotateX, springConfig)
   const rotateYSpring = useSpring(rotateY, springConfig)
+  const cardRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const element = cardRef.current
+
+    gsap.fromTo(
+      element,
+      {
+        y: 100,
+        opacity: 0
+      },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        scrollTrigger: {
+          trigger: element,
+          start: 'top bottom-=100',
+          end: 'bottom center',
+          toggleActions: 'play none none reverse'
+        }
+      }
+    )
+  }, [])
 
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
     const rect = event.currentTarget.getBoundingClientRect()
@@ -48,6 +76,7 @@ export default function PortfolioCard({ project, onSelect }: PortfolioCardProps)
 
   return (
     <motion.div
+      ref={cardRef}
       style={{
         rotateX: rotateXSpring,
         rotateY: rotateYSpring,
@@ -75,7 +104,7 @@ export default function PortfolioCard({ project, onSelect }: PortfolioCardProps)
             fill
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent p-6 flex flex-col justify-end">
+          <div className="absolute inset-0 bg-gradient-to-t from-text-stone-850/80 to-transparent p-6 flex flex-col justify-end">
             <h3 className="text-xl font-bold">{project.title}</h3>
             <p className="text-sm text-zinc-400">{project.category}</p>
           </div>

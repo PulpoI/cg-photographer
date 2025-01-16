@@ -4,7 +4,7 @@ import ServicesFaqs from '@/components/services/services-faqs'
 
 export default function ServicesPage() {
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main className="min-h-screen bg-text-stone-850 text-white">
       <PageHero 
         title="Mis Servicios" 
         breadcrumb="Servicios"

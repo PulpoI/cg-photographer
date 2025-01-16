@@ -39,7 +39,7 @@ export default function PortfolioModal({ project, onClose }: PortfolioModalProps
 
   return (
     <Dialog open={!!project} onOpenChange={() => onClose()}>
-      <DialogContent className="max-w-5xl bg-black p-0">
+      <DialogContent className="max-w-5xl bg-text-stone-850 p-0">
         <div className="relative aspect-video">
           <Image
             src={project.images[currentImageIndex]}
@@ -50,7 +50,7 @@ export default function PortfolioModal({ project, onClose }: PortfolioModalProps
           <Button
             variant="outline"
             size="icon"
-            className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50"
+            className="absolute left-4 top-1/2 -translate-y-1/2 bg-text-stone-850/50"
             onClick={(e) => {
               e.stopPropagation()
               previousImage()
@@ -61,7 +61,7 @@ export default function PortfolioModal({ project, onClose }: PortfolioModalProps
           <Button
             variant="outline"
             size="icon"
-            className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50"
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-text-stone-850/50"
             onClick={(e) => {
               e.stopPropagation()
               nextImage()
@@ -72,7 +72,7 @@ export default function PortfolioModal({ project, onClose }: PortfolioModalProps
           <Button
             variant="outline"
             size="icon"
-            className="absolute right-4 top-4 bg-black/50"
+            className="absolute right-4 top-4 bg-text-stone-850/50"
             onClick={() => onClose()}
           >
             <X className="h-4 w-4" />
