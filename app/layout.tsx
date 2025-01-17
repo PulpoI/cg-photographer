@@ -1,6 +1,6 @@
 'use client'
 import { useEffect } from 'react'
-import { Inter } from 'next/font/google'
+import { DM_Sans } from 'next/font/google'
 import Navbar from '@/components/shared/navbar'
 import Footer from '@/components/shared/footer'
 import ScrollToTop from '@/components/shared/scroll-to-top'
@@ -9,7 +9,7 @@ import { Toaster } from 'react-hot-toast'
 import './globals.css'
 import { initLenis } from '@/lib/lenis'
 
-const inter = Inter({ subsets: ['latin'] })
+const dmSans = DM_Sans({ subsets: ['latin'] })
 
 export default function RootLayout({
   children,
@@ -26,7 +26,7 @@ export default function RootLayout({
 
   return (
     <html lang="es">
-      <body className={`${inter.className} min-h-screen bg-stone-800 text-amber-50`}>
+      <body className={`${dmSans.className} min-h-screen bg-stone-800 text-amber-50`}>
         <CartProvider>
           <div className="flex min-h-screen flex-col">
             <Navbar />

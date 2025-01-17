@@ -7,7 +7,7 @@ export default function Hero() {
       
       {/* Content */}
       <div className="container relative px-4 text-center">
-        <h1 className="mx-auto max-w-4xl text-4xl font-bold leading-tight md:text-6xl lg:text-7xl">
+        <h1 className="font-bromello mx-auto max-w-4xl text-4xl font-bold leading-tight md:text-6xl lg:text-7xl">
           Camila Gonzalez
         </h1>
         <h2 className="text-2xl font-bold">Fotografía Profesional</h2>

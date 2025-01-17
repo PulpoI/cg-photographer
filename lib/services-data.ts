@@ -233,9 +233,9 @@ export const services: Record<string, Service> = {
       }
     ]
   },
-  corporativo: {
-    id: 'corporativo',
-    title: 'Corporativo',
+  corporativos: {
+    id: 'corporativos',
+    title: 'Corporativos',
     shortDescription: 'Capturando momentos únicos en tu evento',
     longDescription: 'Nuestro servicio de fotografía para eventos está diseñado para capturar cada momento especial de tu evento. Desde los preparativos hasta el último baile, estaremos allí para documentar cada emoción, cada sonrisa y cada detalle que hace único tu día.',
     subServices: [

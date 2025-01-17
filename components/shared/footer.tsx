@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Facebook, Twitter, Instagram, Youtube, Linkedin } from 'lucide-react'
+import Image from 'next/image'
 
 export default function Footer() {
   return (
@@ -8,7 +9,7 @@ export default function Footer() {
         <div className="grid gap-8 md:grid-cols-3">
           <div>
             <Link href="/" className="text-2xl font-bold">
-              LOGO
+              <Image src="/logo-white.png" alt="Logo" width={250} height={250} />
             </Link>
             <p className="mt-4 text-zinc-400">
               Servicios profesionales de fotografía para todos tus momentos especiales.

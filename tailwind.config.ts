@@ -60,6 +60,7 @@ const config: Config = {
       fontFamily: {
         sans: ['var(--font-sans)'],
         heading: ['var(--font-heading)'],
+        bromello: ['bromello', 'sans-serif'],
       },
     },
   },

@@ -7,10 +7,10 @@ export default function LifePhotos() {
       <div className="container mx-auto px-4 text-center">
         <h2 className="mb-6 text-3xl font-bold">La vida a través de fotos</h2>
         <p className="mb-8 text-zinc-400">
-          Captura tus momentos 
+          Captura tus momentos,
         </p>
         <Button className="bg-amber-600 hover:bg-amber-700">
-          <Link href="/services">
+          <Link href="/servicios">
           Servicios
           </Link>
         </Button>

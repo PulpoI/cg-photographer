@@ -8,6 +8,7 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { Menu, ChevronDown } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import Cart from '@/components/cart/cart'
+import Image from 'next/image'
 
 const services = [
   { name: 'Bodas', href: '/servicios/bodas' },
@@ -15,7 +16,7 @@ const services = [
   { name: 'Infantiles', href: '/servicios/infantiles' },
   { name: 'Eventos', href: '/servicios/eventos' },
   { name: 'Cumpleaños', href: '/servicios/cumpleanos' },
-  { name: 'Corporativo', href: '/servicios/corporativo' },
+  { name: 'Corporativos', href: '/servicios/corporativos' },
 ]
 
 export default function Navbar() {
@@ -85,7 +86,7 @@ export default function Navbar() {
     >
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link href="/" className="text-xl font-bold text-white">
-          LOGO
+          <Image src="/logo-color.png" alt="Logo" width={200} height={200} />
         </Link>
         
         {/* Desktop Menu */}
