@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button'
-import { Facebook, Twitter, Instagram, Youtube, Linkedin } from 'lucide-react'
+import { Facebook, MessageCircle, Instagram, Youtube, Linkedin } from 'lucide-react'
 
 export default function Hero() {
   return (
@@ -8,12 +8,13 @@ export default function Hero() {
       {/* Content */}
       <div className="container relative px-4 text-center">
         <h1 className="mx-auto max-w-4xl text-4xl font-bold leading-tight md:text-6xl lg:text-7xl">
-          El poder de capturar el mundo
-          <br />
-          en una sola imagen
+          Camila Gonzalez
         </h1>
+        <h2 className="text-2xl font-bold">Fotografía Profesional</h2>
         <p className="mx-auto mt-6 max-w-2xl text-lg text-zinc-400">
-          Crea hermosos recuerdos a través de fotografía y video profesional
+        Cada foto cuenta una historia. 
+        <br />
+        Contactame y capturemos juntos tu momento único.
         </p>
         <Button className="mt-8 bg-amber-600 hover:bg-amber-700">
           Comenzar
@@ -21,10 +22,8 @@ export default function Hero() {
         <div className="mt-12 flex justify-center space-x-6">
           {[
             [Facebook, '#facebook'],
-            [Twitter, '#twitter'],
             [Instagram, '#instagram'],
-            [Youtube, '#youtube'],
-            [Linkedin, '#linkedin']
+            [MessageCircle, '#whatsapp'],
           ].map(([Icon, href]) => (
             <a
               key={href}

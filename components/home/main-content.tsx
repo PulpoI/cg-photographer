@@ -13,15 +13,17 @@ export default function MainContent() {
         <div className="absolute inset-0 bg-gradient-to-r from-amber-600/20 to-transparent" />
       </div>
       <div className="space-y-6">
-        <h2 className="text-3xl font-bold">Capturando recuerdos a través de imágenes</h2>
+        <h2 className="text-3xl font-bold">Hola! soy Camila,</h2>
         <div className="space-y-4">
           <div className="flex justify-between border-b border-zinc-800 pb-2">
-            <span>Fotografía</span>
-            <span>80%</span>
+            <span>
+              <p>
+                una fotógrafa profesional con más de 10 años de experiencia en la industria. Me especializo en la fotografía de eventos, retratos y productos.
+              </p>
+            </span>
           </div>
           <div className="flex justify-between border-b border-zinc-800 pb-2">
-            <span>Retoque</span>
-            <span>90%</span>
+            
           </div>
         </div>
       </div>

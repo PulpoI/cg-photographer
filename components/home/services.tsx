@@ -1,25 +1,25 @@
 import { Button } from '@/components/ui/button'
-import { Camera, Video, Edit } from 'lucide-react'
+import { Camera, Video, Edit, Church, PartyPopper, Baby } from 'lucide-react'
 import Link from 'next/link'
 
 const services = [
   {
-    title: "Fotografía",
-    description: "Sesiones fotográficas profesionales para todas las ocasiones",
-    icon: Camera,
-    href: "/services/photography"
+    title: "Bodas",
+    description: "Capturamos tus momentos más especiales, desde el pre-wedding hasta el día de la boda.",
+    icon: Church,
+    href: "/servicios/bodas"
   },
   {
-    title: "Videografía",
-    description: "Servicios de producción de video de alta calidad",
-    icon: Video,
-    href: "/services/videography"
+    title: "15 Años",
+    description: "Capturamos tus momentos más especiales, desde el pre-wedding hasta el día de la boda.",
+    icon: PartyPopper,
+    href: "/servicios/quinceaneras"
   },
   {
-    title: "Edición",
-    description: "Edición profesional de fotos y videos",
-    icon: Edit,
-    href: "/services/editing"
+    title: "Infantiles",
+    description: "Capturamos tus momentos más especiales, desde el pre-wedding hasta el día de la boda.",
+    icon: Baby,
+    href: "/servicios/infantiles"
   }
 ]
 
