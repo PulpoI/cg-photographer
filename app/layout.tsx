@@ -26,13 +26,11 @@ export default function RootLayout({
 
   return (
     <html lang="es">
-      <body className={`${dmSans.className} min-h-screen bg-stone-800 text-amber-50`}>
+      <body className={`${dmSans.className} min-h-screen bg-coral-light text-cocoa-dark`}>
         <CartProvider>
           <div className="flex min-h-screen flex-col">
             <Navbar />
-            <main className="flex-1">
               {children}
-            </main>
             <Footer />
             <ScrollToTop />
           </div>

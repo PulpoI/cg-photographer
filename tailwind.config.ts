@@ -51,6 +51,19 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        'coral': {
+          DEFAULT: '#F29F80', // tu color principal
+          light: 'rgb(243 242 241)', // tu color principal
+          
+        },
+        'cocoa': {
+          dark: '#48332C',    // brown dark
+          light: '#735F58',   // brown light
+        },
+        'stone': {
+          muted: '#9D8D88',   // gray
+          warm: '#C89B8B',    // warm stone
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

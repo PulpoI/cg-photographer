@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button'
-import { Camera, Video, Edit, Church, PartyPopper, Baby, Ticket } from 'lucide-react'
+import { Camera, Video, Edit, Church, PartyPopper, Baby, Ticket, Cake, Store } from 'lucide-react'
 import Link from 'next/link'
 
 const services = [
@@ -30,14 +30,14 @@ const services = [
   {
     title: "Cumpleaños",
     description: "Capturamos tus momentos más especiales, desde el pre-wedding hasta el día de la boda.",
-    icon: PartyPopper,
+    icon: Cake,
     href: "/servicios/cumpleanos"
   },
 
   {
     title: "Corporativos",
     description: "Capturamos tus momentos más especiales, desde el pre-wedding hasta el día de la boda.",
-    icon: Camera,
+    icon: Store,
     href: "/servicios/corporativos"
   },
 
