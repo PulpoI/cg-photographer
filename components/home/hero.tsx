@@ -10,19 +10,14 @@ import GSAPCarousel from "../shared/gsap-carousel";
 import ParallaxCarousel from "../shared/parallax-carousel";
 import ZoomFadeCarousel from "../shared/zoom-fade-carousel";
 import Gallery from "../shared/gallery-ring-drag";
-import GalleryRing from "../shared/gallery-ring-drag";
+import GalleryRing from "../shared/gallery-ring";
 
 export default function Hero() {
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
-        <div className="absolute inset-0  opacity-80 z-10"></div>
-        {/* <GSAPCarousel /> */}
-        {/* <ParallaxCarousel /> */}
-        {/* <ZoomFadeCarousel /> */}
+        <GalleryRing />
       </div>
-
-
       {/* Content */}
       <div className="container relative px-4 text-center">
         <h1 className="font-bromello mx-auto max-w-4xl text-4xl font-bold leading-tight md:text-6xl lg:text-7xl">

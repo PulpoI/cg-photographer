@@ -11,9 +11,6 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <section className="relative z-10 bg-black">
-        <GalleryRing />
-      </section>
       <Stats />
       <MainContent />
       <LifePhotos />

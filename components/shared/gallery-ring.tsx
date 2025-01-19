@@ -54,7 +54,7 @@ const GalleryRing: React.FC = () => {
 
       autoRotationRef.current = gsap.to(ring, {
         rotationY: "+=360",
-        duration: 30,
+        duration: 60,
         ease: "none",
         repeat: -1,
         onUpdate: () => {

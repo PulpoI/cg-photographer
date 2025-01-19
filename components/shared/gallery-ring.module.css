@@ -9,7 +9,6 @@
 
 .gallery-stage {
   overflow: hidden;
-  background: #000;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -34,5 +33,6 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  border-radius: 2%;
 }
 
