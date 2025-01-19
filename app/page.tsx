@@ -5,11 +5,15 @@ import Services from '@/components/home/services'
 import Portfolio from '@/components/home/portfolio'
 import Contact from '@/components/home/contact'
 import LifePhotos from '@/components/home/life-photos'
+import GalleryRing from '@/components/shared/gallery-ring'
 
 export default function Home() {
   return (
     <main>
       <Hero />
+      <section className="relative z-10 bg-black">
+        <GalleryRing />
+      </section>
       <Stats />
       <MainContent />
       <LifePhotos />

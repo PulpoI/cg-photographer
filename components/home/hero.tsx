@@ -1,10 +1,28 @@
-import { Button } from '@/components/ui/button'
-import { Facebook, MessageCircle, Instagram, Youtube, Linkedin } from 'lucide-react'
+import { Button } from "@/components/ui/button";
+import {
+  Facebook,
+  MessageCircle,
+  Instagram,
+  Youtube,
+  Linkedin,
+} from "lucide-react";
+import GSAPCarousel from "../shared/gsap-carousel";
+import ParallaxCarousel from "../shared/parallax-carousel";
+import ZoomFadeCarousel from "../shared/zoom-fade-carousel";
+import Gallery from "../shared/gallery-ring-drag";
+import GalleryRing from "../shared/gallery-ring-drag";
 
 export default function Hero() {
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
-      
+      <div className="absolute inset-0">
+        <div className="absolute inset-0  opacity-80 z-10"></div>
+        {/* <GSAPCarousel /> */}
+        {/* <ParallaxCarousel /> */}
+        {/* <ZoomFadeCarousel /> */}
+      </div>
+
+
       {/* Content */}
       <div className="container relative px-4 text-center">
         <h1 className="font-bromello mx-auto max-w-4xl text-4xl font-bold leading-tight md:text-6xl lg:text-7xl">
@@ -12,18 +30,18 @@ export default function Hero() {
         </h1>
         <h2 className="text-2xl font-bold">Fotografía Profesional</h2>
         <p className="mx-auto mt-6 max-w-2xl text-lg text-zinc-400">
-        Cada foto cuenta una historia. 
-        <br />
-        Contactame y capturemos juntos tu momento único.
+          Cada foto cuenta una historia.
+          <br />
+          Contactame y capturemos juntos tu momento único.
         </p>
         <Button className="mt-8 bg-amber-600 hover:bg-amber-700">
           Comenzar
         </Button>
         <div className="mt-12 flex justify-center space-x-6">
           {[
-            [Facebook, '#facebook'],
-            [Instagram, '#instagram'],
-            [MessageCircle, '#whatsapp'],
+            [Facebook, "#facebook"],
+            [Instagram, "#instagram"],
+            [MessageCircle, "#whatsapp"],
           ].map(([Icon, href]) => (
             <a
               key={href}
@@ -36,7 +54,8 @@ export default function Hero() {
           ))}
         </div>
       </div>
+      
     </section>
-  )
+    
+  );
 }
-
