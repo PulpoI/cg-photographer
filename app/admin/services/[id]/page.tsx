@@ -174,7 +174,7 @@ export default function ServiceForm({ params }: { params: { id: string } }) {
       </h1>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <div>
-          <label htmlFor="title" className="block text-sm font-medium text-zinc-400">
+          <label htmlFor="title" className="block text-sm font-medium ">
             Título
           </label>
           <Input
@@ -184,7 +184,7 @@ export default function ServiceForm({ params }: { params: { id: string } }) {
           />
         </div>
         <div>
-          <label htmlFor="shortDescription" className="block text-sm font-medium text-zinc-400">
+          <label htmlFor="shortDescription" className="block text-sm font-medium ">
             Descripción Corta
           </label>
           <Input
@@ -194,7 +194,7 @@ export default function ServiceForm({ params }: { params: { id: string } }) {
           />
         </div>
         <div>
-          <label htmlFor="longDescription" className="block text-sm font-medium text-zinc-400">
+          <label htmlFor="longDescription" className="block text-sm font-medium ">
             Descripción Larga
           </label>
           <Textarea

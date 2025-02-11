@@ -10,7 +10,7 @@ export default function PageHero({ title, breadcrumb }: PageHeroProps) {
     <section className="flex min-h-screen items-center justify-center bg-zinc-900/50 pt-16">
       <div className="container px-4 text-center">
         <div className="space-y-4">
-          <div className="flex justify-center space-x-2 text-sm text-zinc-400">
+          <div className="flex justify-center space-x-2 text-sm ">
             <span>Inicio</span>
             {breadcrumbItems.map((item, index) => (
               <span key={item}>

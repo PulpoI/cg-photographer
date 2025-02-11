@@ -19,10 +19,10 @@ export default function ServiceContent({ service }: ServiceContentProps) {
       <div className="container px-4">
         <div className="mx-auto max-w-3xl space-y-12">
           <div className="space-y-4">
-            <p className="text-lg text-zinc-400">
+            <p className="text-lg ">
               {service.shortDescription}
             </p>
-            <p className="text-zinc-400">
+            <p className="">
               {service.longDescription}
             </p>
           </div>
@@ -58,7 +58,7 @@ export default function ServiceContent({ service }: ServiceContentProps) {
                           {pkg.features.map((feature) => (
                             <li key={feature} className="flex items-center gap-2">
                               <Check className="h-4 w-4 text-amber-600" />
-                              <span className="text-sm text-zinc-400">{feature}</span>
+                              <span className="text-sm ">{feature}</span>
                             </li>
                           ))}
                         </ul>

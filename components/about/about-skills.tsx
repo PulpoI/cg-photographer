@@ -29,9 +29,9 @@ export default function AboutSkills() {
         <div className="mx-auto max-w-3xl space-y-8">
           {experiences.map((exp) => (
             <div key={exp.role} className="grid gap-6 md:grid-cols-[1fr,2fr,3fr]">
-              <div className="text-sm text-zinc-400">{exp.period}</div>
+              <div className="text-sm ">{exp.period}</div>
               <div className="font-bold">{exp.role}</div>
-              <div className="text-zinc-400">{exp.description}</div>
+              <div className="">{exp.description}</div>
             </div>
           ))}
         </div>

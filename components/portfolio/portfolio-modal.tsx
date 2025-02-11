@@ -81,7 +81,7 @@ export default function PortfolioModal({ project, onClose }: PortfolioModalProps
         <div className="p-6">
           <h2 className="text-2xl font-bold">{project.title}</h2>
           <p className="mt-2 text-amber-600">Cliente: {project.client}</p>
-          <p className="mt-4 text-zinc-400">{project.description}</p>
+          <p className="mt-4 ">{project.description}</p>
         </div>
       </DialogContent>
     </Dialog>

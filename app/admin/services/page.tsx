@@ -119,7 +119,7 @@ export default function Services() {
             <div className="flex justify-between items-start mb-4">
               <div>
                 <h2 className="text-xl font-semibold">{service.title}</h2>
-                <p className="text-zinc-400">{service.shortDescription}</p>
+                <p className="">{service.shortDescription}</p>
               </div>
               <div className="flex space-x-2">
                 <Button
@@ -144,7 +144,7 @@ export default function Services() {
                     {subService.title}
                     <ul className="list-circle list-inside ml-4 mt-1">
                       {subService.packages.map((pkg) => (
-                        <li key={pkg.id} className="text-sm text-zinc-400">
+                        <li key={pkg.id} className="text-sm ">
                           {pkg.name} - ${pkg.price}
                           <ul className="list-disc list-inside ml-4">
                             {pkg.features.map((feature, index) => (

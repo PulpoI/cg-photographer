@@ -104,7 +104,7 @@ export default function Hero() {
             <a
               key={href}
               href={href}
-              className="text-zinc-400 transition-colors hover:text-white"
+              className=" transition-colors hover:text-white"
             >
               <Icon className="h-6 w-6" />
               <span className="sr-only">{href.slice(1)}</span>

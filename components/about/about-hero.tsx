@@ -3,7 +3,7 @@ export default function AboutHero() {
     <section className="flex h-screen items-center justify-center bg-zinc-900/50">
       <div className="container px-4 text-center">
         <div className="space-y-4">
-          <div className="flex justify-center space-x-2 text-sm text-zinc-400">
+          <div className="flex justify-center space-x-2 text-sm ">
             <span>Home</span>
             <span>/</span>
             <span className="text-amber-600">About</span>

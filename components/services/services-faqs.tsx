@@ -43,7 +43,7 @@ export default function ServicesFaqs() {
                 <AccordionTrigger className="text-left">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-zinc-400">
+                <AccordionContent className="">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>

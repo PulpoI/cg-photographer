@@ -3,7 +3,7 @@ import camilaImg from '@/assets/curso.jpg'
 
 export default function MainContent() {
   return (
-    <section className="container mx-auto grid gap-8 px-4 py-20 md:grid-cols-2 md:items-center">
+    <section className="container mx-auto grid gap-8 px-4 py-32 md:grid-cols-2 md:items-center">
       <div className="relative aspect-square w-full">
         <Image
           src={camilaImg}

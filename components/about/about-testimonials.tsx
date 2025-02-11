@@ -65,7 +65,7 @@ export default function AboutTestimonials() {
             <div className="flex flex-col justify-center">
               <div className="relative space-y-6">
                 <div className="text-6xl text-amber-600">"</div>
-                <p className="text-lg text-zinc-400">
+                <p className="text-lg ">
                   {testimonials[currentIndex].quote}
                 </p>
                 <div>
@@ -81,7 +81,7 @@ export default function AboutTestimonials() {
                     variant="outline"
                     size="icon"
                     onClick={previous}
-                    className="border-zinc-800 text-zinc-400 hover:text-white"
+                    className="border-zinc-800  hover:text-white"
                   >
                     <ArrowLeft className="h-4 w-4" />
                   </Button>
@@ -89,7 +89,7 @@ export default function AboutTestimonials() {
                     variant="outline"
                     size="icon"
                     onClick={next}
-                    className="border-zinc-800 text-zinc-400 hover:text-white"
+                    className="border-zinc-800  hover:text-white"
                   >
                     <ArrowRight className="h-4 w-4" />
                   </Button>

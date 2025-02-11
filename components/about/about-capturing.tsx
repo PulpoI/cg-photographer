@@ -30,7 +30,7 @@ export default function AboutCapturing() {
                 Capturing memories through images
               </h2>
             </div>
-            <p className="text-zinc-400">
+            <p className="">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. In massa velit, dictum 
               ac mattis eu, condi mentum sit amet libero. Praesent vitae Donec ullam 
               corper enim pellentesque est tempus ornare.
@@ -39,7 +39,7 @@ export default function AboutCapturing() {
               {stats.map((stat) => (
                 <div key={stat.label}>
                   <div className="text-2xl font-bold text-amber-600">{stat.value}</div>
-                  <div className="text-sm text-zinc-400">{stat.label}</div>
+                  <div className="text-sm ">{stat.label}</div>
                 </div>
               ))}
             </div>

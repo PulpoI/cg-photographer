@@ -38,7 +38,7 @@ export default function ContactInfo() {
           </div>
           <div className="mt-4 space-y-1">
             {card.content.map((line) => (
-              <p key={line} className="text-zinc-400">{line}</p>
+              <p key={line} className="">{line}</p>
             ))}
           </div>
         </div>

@@ -15,7 +15,7 @@ export default function ServiceCard({ title, description, icon: Icon, href }: Se
         <Icon className="h-6 w-6 text-amber-600" />
       </div>
       <h3 className="mb-2 text-lg font-bold text-white">{title}</h3>
-      <p className="mb-4 text-sm text-zinc-400">{description}</p>
+      <p className="mb-4 text-sm ">{description}</p>
       <Link 
         href={href}
         className="text-sm text-amber-600 hover:text-amber-500"

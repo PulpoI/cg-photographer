@@ -39,14 +39,14 @@ export default function Navbar() {
 
   const NavItems = ({ mobile = false }) => (
     <>
-      <Link href="/" className={cn("text-zinc-400 hover:text-white", mobile ? "text-2xl" : "text-sm")}>
+      <Link href="/" className={cn(" hover:text-white", mobile ? "text-2xl" : "text-sm")}>
         Inicio
       </Link>
-      <Link href="/sobre-mi" className={cn("text-zinc-400 hover:text-white", mobile ? "text-2xl" : "text-sm")}>
+      <Link href="/sobre-mi" className={cn(" hover:text-white", mobile ? "text-2xl" : "text-sm")}>
         Sobre Mí
       </Link>
       <div className="relative group">
-        <Link href="/servicios" className={cn("text-zinc-400 hover:text-white", mobile ? "text-2xl" : "text-sm")}>
+        <Link href="/servicios" className={cn(" hover:text-white", mobile ? "text-2xl" : "text-sm")}>
           Servicios
         </Link>
         <div className={cn(
@@ -59,7 +59,7 @@ export default function Navbar() {
               <Link
                 key={service.href}
                 href={service.href}
-                className="block px-4 py-2 text-sm text-zinc-400 hover:bg-zinc-800 hover:text-white"
+                className="block px-4 py-2 text-sm  hover:bg-zinc-800 hover:text-white"
                 role="menuitem"
               >
                 {service.name}
@@ -68,10 +68,10 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-      <Link href="/portfolio" className={cn("text-zinc-400 hover:text-white", mobile ? "text-2xl" : "text-sm")}>
+      <Link href="/portfolio" className={cn(" hover:text-white", mobile ? "text-2xl" : "text-sm")}>
         Portafolio
       </Link>
-      <Link href="/contacto" className={cn("text-zinc-400 hover:text-white", mobile ? "text-2xl" : "text-sm")}>
+      <Link href="/contacto" className={cn(" hover:text-white", mobile ? "text-2xl" : "text-sm")}>
         Contacto
       </Link>
     </>
@@ -81,7 +81,7 @@ export default function Navbar() {
     <nav
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4",
-        isScrolled ? "bg-text-stone-850/70 backdrop-blur-md py-2" : "bg-transparent"
+        isScrolled ? "bg-text-stone-850/70 bg-coral-light shadow-sm py-2" : "bg-transparent"
       )}
     >
       <div className="container mx-auto flex h-16 items-center justify-between px-4">

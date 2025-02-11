@@ -6,8 +6,8 @@ export default function Stats() {
   ]
 
   return (
-    <div className="bg-cocoa-light">
-      <div className="container mx-auto grid grid-cols-2 gap-4 px-4 py-14 md:grid-cols-3">
+    <div className="bg-gradient-to-r from-cocoa-dark via-stone-muted to-stone-warm">
+      <div className="container mx-auto grid grid-cols-2 gap-4 px-4 py-24 md:grid-cols-3">
         {stats.map((stat) => (
           <div key={stat.label} className="text-center">
             <div className="text-amber-600 font-bold text-4xl">{stat.value}</div>

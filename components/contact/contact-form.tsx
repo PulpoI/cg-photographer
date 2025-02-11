@@ -7,7 +7,7 @@ export default function ContactForm() {
     <div className="space-y-6">
       <div>
         <h2 className="text-2xl font-bold">Enviar un mensaje</h2>
-        <p className="mt-2 text-zinc-400">
+        <p className="mt-2 ">
           Completa el formulario y me pondré en contacto contigo lo antes posible.
         </p>
       </div>

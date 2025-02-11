@@ -52,7 +52,7 @@ export default function PortfolioGrid() {
             fuera de la caja
           </h2>
         </div>
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 ">
           {projects.map((project) => (
             <PortfolioCard
               key={project.id}

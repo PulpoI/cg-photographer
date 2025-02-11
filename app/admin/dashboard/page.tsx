@@ -53,7 +53,7 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         <div className="rounded-lg bg-zinc-900 p-6 shadow-md">
           <h2 className="mb-4 text-xl font-semibold">Gestionar Servicios</h2>
-          <p className="mb-4 text-zinc-400">Añade, edita o elimina los servicios ofrecidos.</p>
+          <p className="mb-4">Añade, edita o elimina los servicios ofrecidos.</p>
           <Button
             onClick={() => router.push('/admin/services')}
             className="bg-amber-600 hover:bg-amber-700 text-white"

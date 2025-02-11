@@ -9,7 +9,7 @@ export default function About() {
         <div className="grid gap-12 md:grid-cols-2 items-center">
           <div>
             <h2 className="text-3xl font-bold mb-4">Sobre Nosotros</h2>
-            <p className="text-zinc-400 mb-6">
+            <p className=" mb-6">
               Somos un equipo apasionado de fotógrafos y videógrafos dedicados a capturar los momentos más especiales de tu vida. Con años de experiencia y un ojo para el detalle, transformamos tus recuerdos en obras de arte.
             </p>
             <Button asChild>
