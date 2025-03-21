@@ -39,21 +39,21 @@ export default function Contact() {
             <div className="grid gap-6 md:grid-cols-2">
               <Input 
                 placeholder="Nombre" 
-                className="bg-zinc-800 border-zinc-700"
+                className="bg-coral-light border-zinc-700"
               />
               <Input 
                 type="email" 
                 placeholder="Email" 
-                className="bg-zinc-800 border-zinc-700"
+                className="bg-coral-light border-zinc-700"
               />
             </div>
             <Input 
               placeholder="Asunto" 
-              className="bg-zinc-800 border-zinc-700"
+              className="bg-coral-light border-zinc-700"
             />
             <Textarea 
               placeholder="Tu mensaje" 
-              className="bg-zinc-800 border-zinc-700"
+              className="bg-coral-light border-zinc-700"
             />
             <Button className="w-full bg-amber-600 hover:bg-amber-700">
               Enviar Mensaje
