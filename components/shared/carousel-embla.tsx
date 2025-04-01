@@ -7,6 +7,7 @@ import {
   EmblaOptionsType
 } from 'embla-carousel'
 import useEmblaCarousel from 'embla-carousel-react'
+import Autoplay from 'embla-carousel-autoplay'
 import './carousel-embla.css'
 
 const TWEEN_FACTOR_BASE = 0.2
@@ -18,13 +19,30 @@ type PropType = {
 
 const EmblaCarousel: React.FC<PropType> = (props) => {
   const { slides, options } = props
-  const [emblaRef, emblaApi] = useEmblaCarousel(options)
+  
+  // Crear instancia del plugin autoplay - ajusta para movimiento más fluido
+  const autoplay = Autoplay({ 
+    delay: 3000,         // Tiempo entre transiciones
+    stopOnInteraction: false,
+    playOnInit: true,    // Inicia automáticamente
+  })
+  
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { 
+      ...options,
+      loop: true,
+      dragFree: true,   // Permitir arrastre libre
+      // watchDrag: false, 
+      containScroll: "keepSnaps",
+      align: "center",  // Centrar slides
+      slidesToScroll: 1, // Deslizar un slide a la vez
+      
+    },
+    [autoplay]
+  )
+  
   const tweenFactor = useRef(0)
   const tweenNodes = useRef<HTMLElement[]>([])
-
-
-
-
 
   const setTweenNodes = useCallback((emblaApi: EmblaCarouselType): void => {
     tweenNodes.current = emblaApi.slideNodes().map((slideNode) => {

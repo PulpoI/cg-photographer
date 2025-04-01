@@ -8,6 +8,8 @@ import { CartProvider } from '@/contexts/cart-context'
 import { Toaster } from 'react-hot-toast'
 import './globals.css'
 import { initLenis } from '@/lib/lenis'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 const dmSans = DM_Sans({ subsets: ['latin'] })
 
@@ -18,7 +20,7 @@ export default function RootLayout({
 }) {
   useEffect(() => {
     const lenis = initLenis()
-    
+    AOS.init({})
     return () => {
       lenis.destroy()
     }

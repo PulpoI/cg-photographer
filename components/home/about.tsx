@@ -16,7 +16,7 @@ export default function About() {
               <Link href="/sobre-mi">Conoce más</Link>
             </Button>
           </div>
-          <div className="relative h-[400px]">
+          <div className="relative h-[400px]" >
             <Image
               src="/placeholder.svg"
               alt="Sobre nosotros"
