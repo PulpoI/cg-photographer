@@ -18,6 +18,12 @@ export interface Service {
   subServices: {
     title: string
     packages: ServicePackage[]
+    shortDescription: string
+    longDescription: string
+    characteristics: {
+      title: string
+      description: string
+    }[]
   }[]
 }
 
@@ -145,48 +151,120 @@ export const services: Record<string, Service> = {
     longDescription: 'Nuestro servicio de fotografía infantil está diseñado para capturar cada momento especial de tu infancia. Desde los preparativos hasta el último baile, estaremos allí para documentar cada emoción, cada sonrisa y cada detalle que hace único tu día.',
     subServices: [
       {
-        title: 'Sesión de Fotos',
+        title: 'Sesiones Infantiles',
+        shortDescription: 'Sesiones en Estudio y Exteriores. Ideales para Mini Baby (3 a 6 meses) y Niños (hasta 13 años).',
+        longDescription: 'Te asesoramos para que quede acorde al tipo de Fotografía que queremos lograr. Te ofrecemos 3 opciones de sesión, cada una con sus características y precios.',
+        characteristics: [
+          {
+            title: 'Vestimenta',
+            description: 'En Estudio lo ideal seria usar ropa con colores neutros y sin estampados cuando el fondo va con muchas decoraciones. Preferentemente me gusta utilizar ropa clásica y atemporal. En Exteriores es preferible usar ropa cómoda y recomiendo tener en cuenta los colores acorde a la locación.'
+          },
+          {
+            title: 'Decoración',
+            description: 'En Estudo contamos con diferentes fondos y utileria. En Exteriores podemos trasladar algunos elementos de utileria. En ambos casos pueden sumar los elementos que quieran para la sesión.'
+          },
+          {
+            title: 'Locación',
+            description: 'Siempre buscamos lugares amplios con buena luz y abundante vegetación. Los espacios verdes son ideales. La locación puede ser sugerida por el cliente o sino trabajamos en algun lugar que suelo utilizar.'
+          }
+        ],
         packages: [
           {
-            name: 'Básico',
-            price: 800,
+            name: 'Esencial',
+            price: 30000,
             features: [
-              '2 horas de sesión',
-              '50 fotos editadas',
-              'Entrega digital'
+              '1 hora de sesión en estudio',
+              'Hasta 30 fotos editadas',
+              'Entrega digital',
+              'Estilo minimalista'
             ]
-          }
-        ]
-      },
-      {
-        title: 'Fiesta',
-        packages: [
+          },
           {
             name: 'Clásico',
-            price: 2000,
+            price: 50000,
             features: [
-              '6 horas de cobertura',
-              '200 fotos editadas',
-              'Video highlights',
-              'Álbum digital'
+              '1 hora de sesión en estudio o exterior',
+              'Hasta 80 fotos editadas',
+              'Entrega digital',
+              'Estilo temático, fine-art o minimalista'
+            ]
+          },
+          {
+            name: 'Mágico',
+            price: 80000,
+            features: [
+              '1 hora de sesión en estudio',
+              '1 hora de sesión en exterior',
+              'Hasta 120 fotos editadas',
+              'Entrega digital',
+              'Estilo temático, fine-art o minimalista'
             ]
           }
         ]
       },
       {
         title: 'Cumpleaños',
+        shortDescription: 'Fotos de la fiesta de cumpleaños del niño.',
+        longDescription: 'Fotos de la fiesta de cumpleaños del niño. Se puede incluir fotos de la fiesta de cumpleaños del niño.',
+        characteristics: [
+          {
+            title: 'Vestimenta',
+            description: 'En Estudio lo ideal seria usar ropa con colores neutros y sin estampados cuando el fondo va con muchas decoraciones. Preferentemente me gusta utilizar ropa clásica y atemporal. En Exteriores es preferible usar ropa cómoda y recomiendo tener en cuenta los colores acorde a la locación.'
+          },
+        ],
         packages: [
           {
-            name: 'Básico',
-            price: 800,
+            name: 'Cobertura esencial',
+            price: 50000,
             features: [
-              '2 horas de sesión',
-              '50 fotos editadas',
-              'Entrega digital'
+              '1 hora de cobertura',
+              'Hasta 100 fotos editadas',
+              'Entrega digital',
+            ]
+          },
+          {
+            name: 'Cobertura completa',
+            price: 100000,
+            features: [
+              '3 horas de cobertura',
+              'Hasta 200 fotos editadas',
+              'Entrega digital',
             ]
           }
         ]
-      }
+      },
+      {
+        title: 'Bautismos',
+        shortDescription: 'Fotos de la fiesta de bautismo del niño.',
+        longDescription: 'Fotos de la fiesta de bautismo del niño. Se puede incluir fotos de la fiesta de bautismo del niño.',
+        characteristics: [
+          {
+            title: 'Vestimenta',
+            description: 'En Estudio lo ideal seria usar ropa con colores neutros y sin estampados cuando el fondo va con muchas decoraciones. Preferentemente me gusta utilizar ropa clásica y atemporal. En Exteriores es preferible usar ropa cómoda y recomiendo tener en cuenta los colores acorde a la locación.'
+          },
+        ],
+        packages: [
+          {
+            name: 'Cobertura de la ceremonia',
+            price: 50000,
+            features: [
+              'Cobertura de la ceremonia',
+              'Hasta 100 fotos editadas',
+              'Entrega digital',
+            ]
+          },
+          {
+            name: 'Cobertura completa',
+            price: 110000,
+            features: [
+              'Cobertura de la ceremonia',
+              'Cobertura de la fiesta de bautismo',
+              'Hasta 200 fotos editadas',
+              'Entrega digital',
+            ]
+          }
+        ]
+      },
     ]
   },
   eventos: {

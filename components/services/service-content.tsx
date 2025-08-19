@@ -6,6 +6,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter }
 import { Check } from 'lucide-react'
 import { useCart } from '@/contexts/cart-context'
 import { Button } from '@/components/ui/button'
+import AboutTestimonials from '../about/about-testimonials'
+import ServicesFaqs from './services-faqs'
 
 interface ServiceContentProps {
   service: Service
@@ -39,9 +41,31 @@ export default function ServiceContent({ service }: ServiceContentProps) {
                 </TabsTrigger>
               ))}
             </TabsList>
+        
 
             {service.subServices.map((subService) => (
+              
               <TabsContent key={subService.title} value={subService.title}>
+              <div className="space-y-4">
+                <p className="text-md text-center">
+                  {subService.shortDescription}
+                </p>
+                <p className='text-xl font-bold text-center'>
+                  Características de {subService.title}
+                </p>
+                <p className="text-md">
+                  {subService.longDescription}
+                </p>
+                <div className="space-y-4">
+                  {subService.characteristics.map((characteristic) => (
+                    <div key={characteristic.title}>
+                      <h3 className="text-lg font-bold">{characteristic.title}</h3>
+                      <p className="text-sm">{characteristic.description}</p>
+                    </div>
+                  ))}
+                </div>
+
+              </div>
                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                   {subService.packages.map((pkg) => (
                     <Card key={pkg.name} className="bg-zinc-900 border-zinc-800">
@@ -58,7 +82,7 @@ export default function ServiceContent({ service }: ServiceContentProps) {
                           {pkg.features.map((feature) => (
                             <li key={feature} className="flex items-center gap-2">
                               <Check className="h-4 w-4 text-amber-600" />
-                              <span className="text-sm ">{feature}</span>
+                              <span className="text-sm text-white">{feature}</span>
                             </li>
                           ))}
                         </ul>
@@ -82,6 +106,9 @@ export default function ServiceContent({ service }: ServiceContentProps) {
               </TabsContent>
             ))}
           </Tabs>
+
+          <AboutTestimonials />
+          <ServicesFaqs />
         </div>
       </div>
     </section>

@@ -11,12 +11,12 @@ import Cart from '@/components/cart/cart'
 import Image from 'next/image'
 
 const services = [
-  { name: 'Bodas', href: '/servicios/bodas' },
-  { name: '15 Años', href: '/servicios/quinceaneras' },
+  // { name: 'Bodas', href: '/servicios/bodas' },
+  // { name: '15 Años', href: '/servicios/quinceaneras' },
   { name: 'Infantiles', href: '/servicios/infantiles' },
-  { name: 'Eventos', href: '/servicios/eventos' },
-  { name: 'Cumpleaños', href: '/servicios/cumpleanos' },
-  { name: 'Corporativos', href: '/servicios/corporativos' },
+  // { name: 'Eventos', href: '/servicios/eventos' },
+  // { name: 'Cumpleaños', href: '/servicios/cumpleanos' },
+  // { name: 'Corporativos', href: '/servicios/corporativos' },
 ]
 
 export default function Navbar() {
@@ -42,9 +42,9 @@ export default function Navbar() {
       <Link href="/" className={cn(" hover:text-white", mobile ? "text-2xl" : "text-sm")}>
         Inicio
       </Link>
-      <Link href="/sobre-mi" className={cn(" hover:text-white", mobile ? "text-2xl" : "text-sm")}>
+      {/* <Link href="/sobre-mi" className={cn(" hover:text-white", mobile ? "text-2xl" : "text-sm")}>
         Sobre Mí
-      </Link>
+      </Link> */}
       <div className="relative group">
         <Link href="/servicios" className={cn(" hover:text-white", mobile ? "text-2xl" : "text-sm")}>
           Servicios
@@ -68,12 +68,12 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-      <Link href="/portfolio" className={cn(" hover:text-white", mobile ? "text-2xl" : "text-sm")}>
+      {/* <Link href="/portfolio" className={cn(" hover:text-white", mobile ? "text-2xl" : "text-sm")}>
         Portafolio
-      </Link>
-      <Link href="/contacto" className={cn(" hover:text-white", mobile ? "text-2xl" : "text-sm")}>
+      </Link> */}
+      {/* <Link href="/contacto" className={cn(" hover:text-white", mobile ? "text-2xl" : "text-sm")}>
         Contacto
-      </Link>
+      </Link> */}
     </>
   )
 

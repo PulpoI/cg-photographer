@@ -22,11 +22,15 @@ export default function MainContent() {
                 Fotógrafa profesional con más de 10 años de experiencia en la industria. <br /> 
                 Me especializo en la fotografía de eventos, retratos y productos.
               </p>
+              <p>
+                Creo que cada etapa tiene su magia, y mi trabajo es capturarla antes de que se escape.
+                Por eso estoy ahí, para congelar esas emociones en fotos que te hagan revivir lo vivido cada vez que las mires.
+              </p>
             </span>
           </div>
-          <div className="flex justify-between border-b border-zinc-800 pb-2">
+          {/* <div className="flex justify-between border-b border-zinc-800 pb-2">
             
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

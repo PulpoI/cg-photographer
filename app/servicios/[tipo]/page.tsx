@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import { services } from '@/lib/services-data'
 import PageHero from '@/components/shared/page-hero'
 import ServiceContent from '@/components/services/service-content'
+import MainContent from '@/components/home/main-content'
 
 interface ServicePageProps {
   params: {
@@ -22,6 +23,7 @@ export default function ServicePage({ params }: ServicePageProps) {
         title={service.title} 
         breadcrumb={`Servicios / ${service.title}`}
       />
+      <MainContent />
       <ServiceContent service={service} />
     </>
   )

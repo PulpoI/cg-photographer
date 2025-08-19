@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useCallback, useEffect, useRef } from 'react'
+import Image from 'next/image'
 import {
   EmblaCarouselType,
   EmblaEventType,
@@ -117,10 +118,14 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
             <div className="embla__slide" key={index}>
               <div className="embla__parallax">
                 <div className="embla__parallax__layer">
-                  <img
+                  <Image
                     className="embla__slide__img embla__parallax__img"
-                    src={`https://picsum.photos/600/350?v=${index}`}
-                    alt="Your alt text"
+                    src={`/life-photos/${index + 1}.jpg`}
+                    alt="Fotografía de vida"
+                    width={600}
+                    height={350}
+                    priority={index < 2}
+                    style={{ objectFit: 'cover' }}
                   />
                 </div>
               </div>
