@@ -15,7 +15,7 @@ import {
 import CartItem from './cart-item'
 import RequestQuoteForm from './request-quote-form'
 import { Toaster } from 'react-hot-toast'
-import { formatCurrency } from '@/lib/currency'
+import PriceDisplay from '@/components/shared/price-display'
 
 export default function Cart() {
   const { items, total, clearCart } = useCart()
@@ -61,7 +61,7 @@ export default function Cart() {
           </div>
           <div className="mt-6 flex justify-between border-t border-zinc-700 pt-4">
             <span className="text-lg font-semibold text-foreground">Total:</span>
-            <span className="text-lg font-semibold text-foreground">{formatCurrency(total)}</span>
+            <span className="text-lg font-semibold text-foreground"><PriceDisplay priceUSD={total} /></span>
           </div>
           <div className="mt-6 space-y-4">
             <Button
@@ -71,7 +71,7 @@ export default function Cart() {
               Solicitar Presupuesto
             </Button>
             <Button
-              className="w-full bg-red-600 hover:bg-red-700"
+              className="w-full text-red-600 hover:text-red-700 bg-transparent border border-red-600 hover:bg-red-600 hover:text-white"
               onClick={clearCart}
             >
               Vaciar Carrito

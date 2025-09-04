@@ -6,7 +6,7 @@ export interface SubService {
 
 export interface ServicePackage {
   name: string
-  price: number
+  priceUSD: number  // Precio base en USD
   features: string[]
 }
 
@@ -36,10 +36,18 @@ export const services: Record<string, Service> = {
     subServices: [
       {
         title: 'Civil',
+        shortDescription: 'Fotos de la ceremonia civil.',
+        longDescription: 'Fotos de la ceremonia civil. Se puede incluir fotos de la ceremonia civil.',
+        characteristics: [
+          {
+            title: 'Fotos',
+            description: 'Fotos de la ceremonia civil. Se puede incluir fotos de la ceremonia civil.'
+          },
+        ],
         packages: [
           {
             name: 'Básico',
-            price: 1000,
+            priceUSD: 100,
             features: [
               '2 horas de cobertura',
               '50 fotos editadas',
@@ -48,7 +56,7 @@ export const services: Record<string, Service> = {
           },
           {
             name: 'Premium',
-            price: 2000,
+            priceUSD: 200,
             features: [
               '4 horas de cobertura',
               '100 fotos editadas',
@@ -60,10 +68,18 @@ export const services: Record<string, Service> = {
       },
       {
         title: 'Ceremonia',
+        shortDescription: 'Fotos de la ceremonia.',
+        longDescription: 'Fotos de la ceremonia. Se puede incluir fotos de la ceremonia.',
+        characteristics: [
+          {
+            title: 'Fotos',
+            description: 'Fotos de la ceremonia. Se puede incluir fotos de la ceremonia.'
+          },
+        ],
         packages: [
           {
             name: 'Clásico',
-            price: 2500,
+            priceUSD: 2500,
             features: [
               '6 horas de cobertura',
               '200 fotos editadas',
@@ -73,7 +89,7 @@ export const services: Record<string, Service> = {
           },
           {
             name: 'Lujo',
-            price: 3500,
+            priceUSD: 3500,
             features: [
               '8 horas de cobertura',
               '300 fotos editadas',
@@ -113,7 +129,7 @@ export const services: Record<string, Service> = {
         packages: [
           {
             name: 'Clásico',
-            price: 170000,
+            priceUSD: 170,
             features: [
               '1 día de sesión en Estudio y/o Exterior',
               'Duración de 4 horas',
@@ -125,7 +141,7 @@ export const services: Record<string, Service> = {
           },
           {
             name: 'Dorado',
-            price: 300000,
+            priceUSD: 300,
             features: [
               '2 días de sesión en Estudio y/o Exterior',
               'Duración de 4 horas (por sesión)',
@@ -150,7 +166,7 @@ export const services: Record<string, Service> = {
         packages: [
           {
             name: 'Clásico',
-            price: 2000,
+            priceUSD: 200,
             features: [
               '6 horas de cobertura',
               '200 fotos editadas',
@@ -160,7 +176,7 @@ export const services: Record<string, Service> = {
           },
           {
             name: 'Lujo',
-            price: 3000,
+            priceUSD: 300,
             features: [
               '8 horas de cobertura',
               '300 fotos editadas',
@@ -200,7 +216,7 @@ export const services: Record<string, Service> = {
         packages: [
           {
             name: 'Esencial',
-            price: 30000,
+            priceUSD: 30,
             features: [
               '1 hora de sesión en estudio',
               'Hasta 30 fotos editadas',
@@ -210,7 +226,7 @@ export const services: Record<string, Service> = {
           },
           {
             name: 'Clásico',
-            price: 50000,
+            priceUSD: 50,
             features: [
               '1 hora de sesión en estudio o exterior',
               'Hasta 80 fotos editadas',
@@ -220,7 +236,7 @@ export const services: Record<string, Service> = {
           },
           {
             name: 'Mágico',
-            price: 80000,
+            priceUSD: 80,
             features: [
               '1 hora de sesión en estudio',
               '1 hora de sesión en exterior',
@@ -244,7 +260,7 @@ export const services: Record<string, Service> = {
         packages: [
           {
             name: 'Cobertura esencial',
-            price: 50000,
+            priceUSD: 50,
             features: [
               '1 hora de cobertura',
               'Hasta 100 fotos editadas',
@@ -253,7 +269,7 @@ export const services: Record<string, Service> = {
           },
           {
             name: 'Cobertura completa',
-            price: 100000,
+            priceUSD: 100,
             features: [
               '3 horas de cobertura',
               'Hasta 200 fotos editadas',
@@ -275,7 +291,7 @@ export const services: Record<string, Service> = {
         packages: [
           {
             name: 'Cobertura de la ceremonia',
-            price: 50000,
+            priceUSD: 50,
             features: [
               'Cobertura de la ceremonia',
               'Hasta 100 fotos editadas',
@@ -284,7 +300,7 @@ export const services: Record<string, Service> = {
           },
           {
             name: 'Cobertura completa',
-            price: 110000,
+            priceUSD: 110,
             features: [
               'Cobertura de la ceremonia',
               'Cobertura de la fiesta de bautismo',
@@ -296,43 +312,69 @@ export const services: Record<string, Service> = {
       },
     ]
   },
-  eventos: {
-    id: 'eventos',
-    title: 'Eventos',
-    shortDescription: 'Capturando momentos únicos en tu evento',
-    longDescription: 'Nuestro servicio de fotografía para eventos está diseñado para capturar cada momento especial de tu evento. Desde los preparativos hasta el último baile, estaremos allí para documentar cada emoción, cada sonrisa y cada detalle que hace único tu día.',
-    subServices: [
-      {
-        title: 'Evento',
-        packages: [
-          {
-            name: 'Básico',
-            price: 800,
-            features: [
-              '2 horas de sesión',
-              '50 fotos editadas',
-              'Entrega digital'
-            ]
-          }
-        ]
-      }
-    ]
-  },
+  // eventos: {
+  //   id: 'eventos',
+  //   title: 'Eventos',
+  //   shortDescription: 'Capturando momentos únicos en tu evento',
+  //   longDescription: 'Nuestro servicio de fotografía para eventos está diseñado para capturar cada momento especial de tu evento. Desde los preparativos hasta el último baile, estaremos allí para documentar cada emoción, cada sonrisa y cada detalle que hace único tu día.',
+  //   subServices: [
+  //     {
+  //       title: 'Evento',
+  //       packages: [
+  //         {
+  //           name: 'Básico',
+  //           price: 800,
+  //           features: [
+  //             '2 horas de sesión',
+  //             '50 fotos editadas',
+  //             'Entrega digital'
+  //           ]
+  //         }
+  //       ]
+  //     }
+  //   ]
+  // },
   cumpleanos: {
     id: 'cumpleanos',
-    title: 'Cumpleaños',
+    title: 'Cumpleaños y Fiestas',
     shortDescription: 'Capturando momentos únicos en tu cumpleaños',
     longDescription: 'Nuestro servicio de fotografía para cumpleaños está diseñado para capturar cada momento especial de tu cumpleaños. Desde los preparativos hasta el último baile, estaremos allí para documentar cada emoción, cada sonrisa y cada detalle que hace único tu día.',
     subServices: [
       {
-        title: 'Cumpleaños',
+        title: 'Cumpleaños y Fiestas',
+        shortDescription: 'Fotos de cumpleaños y fiestas.',
+        longDescription: 'Fotos de cumpleaños y fiestas. Se puede incluir fotos de cumpleaños y fiestas.',
+        characteristics: [
+          {
+            title: 'Fotos',
+            description: 'Fotos de cumpleaños y fiestas. Se puede incluir fotos de cumpleaños y fiestas.'
+          },
+        ],
         packages: [
           {
             name: 'Básico',
-            price: 800,
+            priceUSD: 80,
             features: [
               '2 horas de sesión',
               '50 fotos editadas',
+              'Entrega digital'
+            ]
+          }, 
+          {
+            name: 'Esencial',
+            priceUSD: 80,
+            features: [
+              '2 horas de sesión',
+              '50 fotos editadas',
+              'Entrega digital'
+            ]
+          },
+          {
+            name: 'Fiesta Completa',
+            priceUSD: 120,
+            features: [
+              '3 horas de sesión',
+              '100 fotos editadas',
               'Entrega digital'
             ]
           }
@@ -340,27 +382,27 @@ export const services: Record<string, Service> = {
       }
     ]
   },
-  corporativos: {
-    id: 'corporativos',
-    title: 'Corporativos',
-    shortDescription: 'Capturando momentos únicos en tu evento',
-    longDescription: 'Nuestro servicio de fotografía para eventos está diseñado para capturar cada momento especial de tu evento. Desde los preparativos hasta el último baile, estaremos allí para documentar cada emoción, cada sonrisa y cada detalle que hace único tu día.',
-    subServices: [
-      {
-        title: 'Evento',
-        packages: [
-          {
-            name: 'Básico',
-            price: 800,
-            features: [
-              '2 horas de sesión',
-              '50 fotos editadas',
-              'Entrega digital'
-            ]
-          }
-        ]
-      }
-    ]
-  }
+  // corporativos: {
+  //   id: 'corporativos',
+  //   title: 'Corporativos',
+  //   shortDescription: 'Capturando momentos únicos en tu evento',
+  //   longDescription: 'Nuestro servicio de fotografía para eventos está diseñado para capturar cada momento especial de tu evento. Desde los preparativos hasta el último baile, estaremos allí para documentar cada emoción, cada sonrisa y cada detalle que hace único tu día.',
+  //   subServices: [
+  //     {
+  //       title: 'Evento',
+  //       packages: [
+  //         {
+  //           name: 'Básico',
+  //           price: 800,
+  //           features: [
+  //             '2 horas de sesión',
+  //             '50 fotos editadas',
+  //             'Entrega digital'
+  //           ]
+  //         }
+  //       ]
+  //     }
+  //   ]
+  // }
 }
 

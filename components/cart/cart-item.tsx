@@ -1,7 +1,7 @@
 import { useCart } from '@/contexts/cart-context'
 import { X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { formatCurrency } from '@/lib/currency'
+import PriceDisplay from '@/components/shared/price-display'
 
 interface CartItemProps {
   item: {
@@ -9,7 +9,7 @@ interface CartItemProps {
     serviceTitle: string
     subServiceTitle: string
     name: string
-    price: number
+    priceUSD: number
   }
 }
 
@@ -21,7 +21,7 @@ export default function CartItem({ item }: CartItemProps) {
       <div>
         {/* <h4 className="font-semibold text-foreground">{item.serviceTitle}</h4> */}
         <p className="text-sm text-foreground">{item.subServiceTitle} - {item.name}</p>
-        <p className="text-amber-600">{formatCurrency(item.price)}</p>
+        <p className="text-amber-600"><PriceDisplay priceUSD={item.priceUSD} /></p>
       </div>
       <Button
         variant="default"

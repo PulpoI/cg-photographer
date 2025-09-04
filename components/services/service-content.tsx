@@ -14,7 +14,7 @@ import {
 import { Check } from "lucide-react";
 import { useCart } from "@/contexts/cart-context";
 import { Button } from "@/components/ui/button";
-import { formatCurrency } from "@/lib/currency";
+import PriceDisplay from "@/components/shared/price-display";
 
 interface ServiceContentProps {
   service: Service;
@@ -173,7 +173,7 @@ export default function ServiceContent({ service }: ServiceContentProps) {
                         <CardTitle>{pkg.name}</CardTitle>
                         <CardDescription>
                           <span className="text-2xl font-bold text-amber-600">
-                            {formatCurrency(pkg.price)}
+                            <PriceDisplay priceUSD={pkg.priceUSD} />
                           </span>
                         </CardDescription>
                       </CardHeader>

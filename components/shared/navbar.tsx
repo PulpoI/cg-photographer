@@ -10,6 +10,7 @@ import { cn } from '@/lib/utils'
 import Cart from '@/components/cart/cart'
 import Image from 'next/image'
 import { services } from '@/lib/services-data'
+import CurrencySelector from './currency-selector'
 
 // const services = [
 //   // { name: 'Bodas', href: '/servicios/bodas' },
@@ -150,6 +151,7 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-4 w-52 justify-end" >
+          <CurrencySelector />
           <Cart />
         </div>
       </div>

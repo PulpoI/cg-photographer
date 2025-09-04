@@ -72,13 +72,13 @@ export default function Services() {
           </Button> */}
       </div>
       <div
-        className="grid gap-10 md:grid-cols-3"
+        className="grid gap-10 lg:grid-cols-4 md:grid-cols-2"
         data-aos="fade-in"
         data-aos-easing="ease-in-sine"
         data-aos-duration="700"
       >
         {Object.values(services).map((service) => (
-          <div key={service.title} className="space-y-4">
+          <div key={service.title} className="space-y-4 flex flex-col items-center justify-center text-center">
             {service.id === "bodas" ? (
               <Church className="h-6 w-6 text-amber-600" />
             ) : service.id === "quinceaneras" ? (
