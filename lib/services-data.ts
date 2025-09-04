@@ -94,30 +94,59 @@ export const services: Record<string, Service> = {
     subServices: [
       {
         title: 'Sesión de Fotos',
+        shortDescription: 'Sesiones en Estudio y Exteriores. Ideal para Quinceañeras.',
+        longDescription: 'Te asesoramos para que quede acorde al tipo de Fotografía que queremos lograr. Te ofrecemos 2 opciones de sesión, cada una con sus características y precios.',
+        characteristics: [
+          {
+            title: 'Pre-producción',
+            description: 'Las sesiones pueden ser tanto en estudio como en exteriores. Esto lo acordamos en una reunión de pre-producción donde nos conoceremos y conversaremos sobre los detalles de la sesión. Para que llegues confiada a la sesion charlaremos sobre tus gustos y tipos de fotos que te agradan. El make up y el vestuario son escenciales para una buena producción, te ayudaré a elegir la mejor opción.'
+          },
+          {
+            title: 'Producción',
+            description: 'Las sesiones duran aproximadamente 4 horas. El tiempo puede ser distribuido en estudio o en diferentes locaciones. La idea de la sesión es pasar una tarde agradable donde te sientas cómoda para lograr las mejores tomas y al final del dia estes contenta con el trabajo realizado.'
+          }, 
+          {
+            title: 'Post-producción',
+            description: 'Seleccionaré las mejores fotos y las editaré de manera profesional dandole mi toque personal. Te entregaré todas las fotos en alta calidad en un Pendrive para que compartas con tu familia y amigos. En todas las sesiones ofrecemos opcionalmente Fotolibros, el mas elegido es el de tamaño 20x30, tapa dura. Son un detalle hermoso ya que te queda un recuerdo con las mejores fotos elegidas por vos.'
+          }
+        ],
         packages: [
           {
-            name: 'Básico',
-            price: 800,
+            name: 'Clásico',
+            price: 170000,
             features: [
-              '2 horas de sesión',
-              '50 fotos editadas',
-              'Entrega digital'
+              '1 día de sesión en Estudio y/o Exterior',
+              'Duración de 4 horas',
+              'Cambios de vestuario',
+              'Incluye Make Up',
+              'Diferentes locaciones',
+              'Fotos editadas en alta calidad'
             ]
           },
           {
-            name: 'Premium',
-            price: 1500,
+            name: 'Dorado',
+            price: 300000,
             features: [
-              '4 horas de sesión',
-              '100 fotos editadas',
-              'Álbum digital',
-              'Entrega en USB'
+              '2 días de sesión en Estudio y/o Exterior',
+              'Duración de 4 horas (por sesión)',
+              'Cambios de vestuario',
+              'Incluye Make Up',
+              'Diferentes locaciones',
+              'Fotos editadas en alta calidad'
             ]
           }
         ]
       },
       {
         title: 'Fiesta',
+        shortDescription: 'Fiesta de Quinceañeras. Sesiones en Estudio y Exteriores. Ideal para Quinceañeras.',
+        longDescription: 'Te asesoramos para que quede acorde al tipo de Fotografía que queremos lograr. Te ofrecemos 3 opciones de sesión, cada una con sus características y precios.',
+        characteristics: [
+          {
+            title: 'Vestimenta',
+            description: 'En Estudio lo ideal seria usar ropa con colores neutros y sin estampados cuando el fondo va con muchas decoraciones. Preferentemente me gusta utilizar ropa clásica y atemporal. En Exteriores es preferible usar ropa cómoda y recomiendo tener en cuenta los colores acorde a la locación.'
+          },
+        ],
         packages: [
           {
             name: 'Clásico',
@@ -151,7 +180,7 @@ export const services: Record<string, Service> = {
     longDescription: 'Nuestro servicio de fotografía infantil está diseñado para capturar cada momento especial de tu infancia. Desde los preparativos hasta el último baile, estaremos allí para documentar cada emoción, cada sonrisa y cada detalle que hace único tu día.',
     subServices: [
       {
-        title: 'Sesiones Infantiles',
+        title: 'Sesion de Fotos',
         shortDescription: 'Sesiones en Estudio y Exteriores. Ideales para Mini Baby (3 a 6 meses) y Niños (hasta 13 años).',
         longDescription: 'Te asesoramos para que quede acorde al tipo de Fotografía que queremos lograr. Te ofrecemos 3 opciones de sesión, cada una con sus características y precios.',
         characteristics: [
@@ -234,7 +263,7 @@ export const services: Record<string, Service> = {
         ]
       },
       {
-        title: 'Bautismos',
+        title: 'Bautismo',
         shortDescription: 'Fotos de la fiesta de bautismo del niño.',
         longDescription: 'Fotos de la fiesta de bautismo del niño. Se puede incluir fotos de la fiesta de bautismo del niño.',
         characteristics: [

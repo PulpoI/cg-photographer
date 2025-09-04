@@ -1,13 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import {
-  Facebook,
-  Instagram,
-} from "lucide-react";
-
-import heroBg from "@/assets/_DSC9901.jpg";
-
+import heroBg from "@/assets/hero-home.webp";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import Rellax from "rellax";

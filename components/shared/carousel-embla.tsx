@@ -11,7 +11,7 @@ import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
 import './carousel-embla.css'
 
-const TWEEN_FACTOR_BASE = 0.2
+const TWEEN_FACTOR_BASE = 0.4
 
 type PropType = {
   slides: number[]
@@ -32,7 +32,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
     { 
       ...options,
       loop: true,
-      dragFree: true,   // Permitir arrastre libre
+      dragFree: false,   // Permitir arrastre libre
       // watchDrag: false, 
       containScroll: "keepSnaps",
       align: "center",  // Centrar slides

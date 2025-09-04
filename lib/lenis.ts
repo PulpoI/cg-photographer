@@ -12,10 +12,12 @@ export const initLenis = () => {
     gestureOrientation: 'vertical',
     smoothWheel: true,
     wheelMultiplier: 1,
-    smoothTouch: false,
     touchMultiplier: 2,
     infinite: false,
   })
+
+  // Make Lenis available globally for the scroll hook
+  ;(window as any).lenis = lenis
 
   lenis.on('scroll', ScrollTrigger.update)
 

@@ -1,6 +1,6 @@
 import PageHero from '@/components/shared/page-hero'
-import ServicesGrid from '@/components/services/services-grid'
-import ServicesFaqs from '@/components/services/services-faqs'
+import Faqs from '@/components/shared/faqs'
+import Services from '@/components/shared/services'
 
 export default function ServicesPage() {
   return (
@@ -9,8 +9,8 @@ export default function ServicesPage() {
         title="Mis Servicios" 
         breadcrumb="Servicios"
       />
-      <ServicesGrid />
-      <ServicesFaqs />
+      <Services />
+      <Faqs />
     </main>
   )
 }

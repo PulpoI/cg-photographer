@@ -9,4 +9,3 @@ export const fontHeading = Playfair_Display({
   subsets: ['latin'],
   variable: '--font-heading',
 })
-

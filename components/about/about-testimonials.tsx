@@ -45,11 +45,11 @@ export default function AboutTestimonials() {
     <section className="bg-text-stone-850 py-20">
       <div className="container px-4">
         <div className="mb-12 text-center">
-          <span className="text-amber-600">Testimonials</span>
+          <span className="text-amber-600">Testimonios</span>
           <h2 className="mt-2 text-3xl font-bold">
-            Nothing tells story like
+            Nada cuenta una historia como
             <br />
-            our photos
+            nuestras fotos
           </h2>
         </div>
         <div className="mx-auto max-w-6xl">

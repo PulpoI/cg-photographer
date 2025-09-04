@@ -145,7 +145,7 @@ export default function Services() {
                     <ul className="list-circle list-inside ml-4 mt-1">
                       {subService.packages.map((pkg) => (
                         <li key={pkg.id} className="text-sm ">
-                          {pkg.name} - ${pkg.price}
+                          {pkg.name} - ${pkg.price.toLocaleString('es-AR')}
                           <ul className="list-disc list-inside ml-4">
                             {pkg.features.map((feature, index) => (
                               <li key={index} className="text-xs">{feature}</li>

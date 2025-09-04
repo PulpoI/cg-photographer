@@ -1,6 +1,7 @@
 import { useCart } from '@/contexts/cart-context'
 import { X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { formatCurrency } from '@/lib/currency'
 
 interface CartItemProps {
   item: {
@@ -20,7 +21,7 @@ export default function CartItem({ item }: CartItemProps) {
       <div>
         {/* <h4 className="font-semibold text-foreground">{item.serviceTitle}</h4> */}
         <p className="text-sm text-foreground">{item.subServiceTitle} - {item.name}</p>
-        <p className="text-amber-600">${item.price.toFixed(2)}</p>
+        <p className="text-amber-600">{formatCurrency(item.price)}</p>
       </div>
       <Button
         variant="default"

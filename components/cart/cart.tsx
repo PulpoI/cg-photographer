@@ -15,6 +15,7 @@ import {
 import CartItem from './cart-item'
 import RequestQuoteForm from './request-quote-form'
 import { Toaster } from 'react-hot-toast'
+import { formatCurrency } from '@/lib/currency'
 
 export default function Cart() {
   const { items, total, clearCart } = useCart()
@@ -60,7 +61,7 @@ export default function Cart() {
           </div>
           <div className="mt-6 flex justify-between border-t border-zinc-700 pt-4">
             <span className="text-lg font-semibold text-foreground">Total:</span>
-            <span className="text-lg font-semibold text-foreground">${total.toFixed(2)}</span>
+            <span className="text-lg font-semibold text-foreground">{formatCurrency(total)}</span>
           </div>
           <div className="mt-6 space-y-4">
             <Button
