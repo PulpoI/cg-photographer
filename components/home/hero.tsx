@@ -8,6 +8,7 @@ import Rellax from "rellax";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 export default function Hero() {
   const bgRef = useRef<HTMLImageElement>(null);
@@ -144,7 +145,7 @@ export default function Hero() {
           Contactame y capturemos juntos tu momento único.
         </p>
         <Button className="mt-8 bg-amber-600 hover:bg-amber-700">
-          Comenzar
+            <Link href="/#servicios">Servicios</Link>
         </Button>
         {/* <div className="mt-12 flex justify-center space-x-6">
           {[

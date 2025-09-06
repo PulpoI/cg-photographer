@@ -4,7 +4,7 @@ import Services from '@/components/shared/services'
 
 export default function ServicesPage() {
   return (
-    <main className="min-h-screen bg-text-stone-850 text-white">
+    <main className="min-h-screen bg-text-stone-850">
       <PageHero 
         title="Mis Servicios" 
         breadcrumb="Servicios"

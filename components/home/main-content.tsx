@@ -1,5 +1,5 @@
 import Image from "next/image";
-import camilaImg from "@/assets/curso.jpg";
+import camilaImg from "@/assets/about-me.webp";
 
 export default function MainContent() {
   return (

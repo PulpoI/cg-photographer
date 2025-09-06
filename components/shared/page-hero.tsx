@@ -1,7 +1,7 @@
 "use client"
 import Image from "next/image"
 import pageHeroBg from "@/assets/0236.jpg"
-import bodas from "@/assets/services/bodas.jpg"
+import bodas from "@/assets/services/bodas.webp"
 import infantiles from "@/assets/services/infantiles.webp"
 import quinceaneras from "@/assets/services/quinceaneras.webp"
 import cumpleanos from "@/assets/services/cumpleanos.jpg"

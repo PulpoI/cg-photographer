@@ -1,9 +1,10 @@
 'use client'
 
-import { useState } from 'react'
 import { useCart } from '@/contexts/cart-context'
 import { Button } from '@/components/ui/button'
 import { ShoppingCart, X } from 'lucide-react'
+import Link from 'next/link'
+import { useState } from 'react'
 import {
   Sheet,
   SheetContent,
@@ -13,13 +14,11 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 import CartItem from './cart-item'
-import RequestQuoteForm from './request-quote-form'
-import { Toaster } from 'react-hot-toast'
 import PriceDisplay from '@/components/shared/price-display'
 
 export default function Cart() {
   const { items, total, clearCart } = useCart()
-  const [isQuoteFormOpen, setIsQuoteFormOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
 
   const groupedItems = items.reduce((acc, item) => {
     if (!acc[item.serviceTitle]) {
@@ -31,7 +30,7 @@ export default function Cart() {
 
   return (
     <>
-      <Sheet>
+      <Sheet open={isOpen} onOpenChange={setIsOpen}>
         <SheetTrigger asChild>
           <Button variant="default" size="icon" className="relative">
             <ShoppingCart className="h-4 w-4" />
@@ -49,40 +48,52 @@ export default function Cart() {
               Revisa los servicios seleccionados y solicita un presupuesto.
             </SheetDescription>
           </SheetHeader>
-          <div className="mt-6 space-y-6">
-            {Object.entries(groupedItems).map(([serviceTitle, serviceItems]) => (
-              <div key={serviceTitle} className="space-y-4">
-                <h3 className="text-lg font-semibold text-foreground">{serviceTitle}</h3>
-                {serviceItems.map((item) => (
-                  <CartItem key={`${item.serviceId}-${item.subServiceTitle}-${item.name}`} item={item} />
+          {items.length === 0 ? (
+            <div className="mt-6 text-center py-8">
+              <div className="text-gray-500 mb-4">
+                <ShoppingCart className="h-12 w-12 mx-auto mb-2 opacity-50" />
+                <p className="text-lg font-medium">Carrito Vacío</p>
+                <p className="text-sm">Agrega servicios para solicitar un presupuesto</p>
+              </div>
+              <Link href="/#servicios">
+                <Button className="w-full bg-amber-600 hover:bg-amber-700">
+                  Ver Servicios
+                </Button>
+              </Link>
+            </div>
+          ) : (
+            <>
+              <div className="mt-6 space-y-6">
+                {Object.entries(groupedItems).map(([serviceTitle, serviceItems]) => (
+                  <div key={serviceTitle} className="space-y-4">
+                    <h3 className="text-lg font-semibold text-foreground">{serviceTitle}</h3>
+                    {serviceItems.map((item) => (
+                      <CartItem key={`${item.serviceId}-${item.subServiceTitle}-${item.name}`} item={item} />
+                    ))}
+                  </div>
                 ))}
               </div>
-            ))}
-          </div>
-          <div className="mt-6 flex justify-between border-t border-zinc-700 pt-4">
-            <span className="text-lg font-semibold text-foreground">Total:</span>
-            <span className="text-lg font-semibold text-foreground"><PriceDisplay priceUSD={total} /></span>
-          </div>
-          <div className="mt-6 space-y-4">
-            <Button
-              className="w-full bg-amber-600 hover:bg-amber-700"
-              onClick={() => setIsQuoteFormOpen(true)}
-            >
-              Solicitar Presupuesto
-            </Button>
-            <Button
-              className="w-full text-red-600 hover:text-red-700 bg-transparent border border-red-600 hover:bg-red-600 hover:text-white"
-              onClick={clearCart}
-            >
-              Vaciar Carrito
-            </Button>
-          </div>
+              <div className="mt-6 flex justify-between border-t border-zinc-700 pt-4">
+                <span className="text-lg font-semibold text-foreground">Total:</span>
+                <span className="text-lg font-semibold text-foreground"><PriceDisplay priceUSD={total} /></span>
+              </div>
+              <div className="mt-6 space-y-4">
+                <Link href="/checkout" onClick={() => setIsOpen(false)}>
+                  <Button className="w-full bg-amber-600 hover:bg-amber-700">
+                    Solicitar Presupuesto
+                  </Button>
+                </Link>
+                <Button
+                  className="w-full text-red-600 bg-transparent border border-red-600 hover:bg-red-600 hover:text-white"
+                  onClick={clearCart}
+                >
+                  Vaciar Carrito
+                </Button>
+              </div>
+            </>
+          )}
         </SheetContent>
       </Sheet>
-      {isQuoteFormOpen && (
-        <RequestQuoteForm onClose={() => setIsQuoteFormOpen(false)} />
-      )}
-      <Toaster />
     </>
   )
 }
