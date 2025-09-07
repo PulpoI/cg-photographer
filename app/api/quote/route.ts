@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import * as brevo from '@getbrevo/brevo';
 import { EXCHANGE_RATES } from '@/lib/exchange-rates';
+import { whatsappAPI } from '@/lib/whatsapp-api';
 
 // Configurar el cliente de Brevo
 const apiInstance = new brevo.TransactionalEmailsApi();
@@ -12,8 +13,16 @@ contactsApiInstance.setApiKey(brevo.ContactsApiApiKeys.apiKey, process.env.BREVO
 
 export async function POST(request: NextRequest) {
   try {
+    console.log('🚀 QUOTE API: Iniciando procesamiento de presupuesto...');
     const body = await request.json();
     const { nombre, email, telefono, mensaje, items, total } = body;
+    
+    console.log('📋 QUOTE API: Datos recibidos:');
+    console.log('📋 QUOTE API: - Nombre:', nombre);
+    console.log('📋 QUOTE API: - Email:', email);
+    console.log('📋 QUOTE API: - Teléfono:', telefono);
+    console.log('📋 QUOTE API: - Items:', items?.length || 0);
+    console.log('📋 QUOTE API: - Total:', total);
 
     // Validar los datos requeridos
     if (!nombre || !email) {
@@ -76,7 +85,9 @@ export async function POST(request: NextRequest) {
       `;
     }).join('');
 
-    // 3. Enviar email de presupuesto al administrador
+    // 3. Enviar email de presupuesto al administrador (TEMPORALMENTE DESACTIVADO)
+    console.log('📧 EMAIL ADMIN: Desactivado temporalmente para debug');
+    /*
     const sendSmtpEmail = new brevo.SendSmtpEmail();
     sendSmtpEmail.to = [{ 
       email: process.env.BREVO_ADMIN_EMAIL || process.env.BREVO_SENDER_EMAIL!, 
@@ -138,8 +149,11 @@ export async function POST(request: NextRequest) {
     sendSmtpEmail.replyTo = { email: email, name: nombre };
 
     await apiInstance.sendTransacEmail(sendSmtpEmail);
+    */
 
-    // 4. Enviar email de confirmación al cliente
+    // 4. Enviar email de confirmación al cliente (TEMPORALMENTE DESACTIVADO)
+    console.log('📧 EMAIL CLIENTE: Desactivado temporalmente para debug');
+    /*
     const confirmationEmail = new brevo.SendSmtpEmail();
     confirmationEmail.to = [{ email: email, name: nombre }];
     confirmationEmail.sender = { email: process.env.BREVO_SENDER_EMAIL!, name: process.env.BREVO_SENDER_NAME };
@@ -218,6 +232,45 @@ export async function POST(request: NextRequest) {
     `;
 
     await apiInstance.sendTransacEmail(confirmationEmail);
+    */
+
+    // 5. Enviar mensaje de WhatsApp automáticamente si hay teléfono
+    console.log('📱 WHATSAPP DEBUG: Iniciando proceso de envío...');
+    console.log('📱 WHATSAPP DEBUG: Teléfono recibido:', telefono);
+    
+    if (telefono) {
+      try {
+        console.log('📱 WHATSAPP DEBUG: Procesando número de teléfono...');
+        const formattedPhone = whatsappAPI.formatPhoneNumber(telefono);
+        console.log('📱 WHATSAPP DEBUG: Número formateado:', formattedPhone);
+        
+        console.log('📱 WHATSAPP DEBUG: Generando mensaje...');
+        const whatsappMessage = whatsappAPI.generateQuoteMessage({
+          nombre,
+          items,
+          total
+        });
+        console.log('📱 WHATSAPP DEBUG: Mensaje generado:', whatsappMessage);
+        
+        console.log('📱 WHATSAPP DEBUG: Enviando mensaje...');
+        console.log('📱 WHATSAPP DEBUG: Access Token:', process.env.WHATSAPP_ACCESS_TOKEN ? '✅ Configurado' : '❌ No configurado');
+        console.log('📱 WHATSAPP DEBUG: Phone Number ID:', process.env.WHATSAPP_PHONE_NUMBER_ID ? '✅ Configurado' : '❌ No configurado');
+        
+        const result = await whatsappAPI.sendMessage(formattedPhone, whatsappMessage);
+        console.log('✅ WHATSAPP SUCCESS: Mensaje enviado exitosamente');
+        console.log('✅ WHATSAPP SUCCESS: Respuesta de la API:', JSON.stringify(result, null, 2));
+        console.log('✅ WHATSAPP SUCCESS: Para:', formattedPhone);
+        
+      } catch (whatsappError: any) {
+        console.error('❌ WHATSAPP ERROR: Error al enviar mensaje');
+        console.error('❌ WHATSAPP ERROR: Mensaje de error:', whatsappError.message);
+        console.error('❌ WHATSAPP ERROR: Stack completo:', whatsappError.stack);
+        console.error('❌ WHATSAPP ERROR: Respuesta completa:', whatsappError.response?.data || 'No hay datos de respuesta');
+        // No fallar la operación si WhatsApp falla
+      }
+    } else {
+      console.log('ℹ️ WHATSAPP INFO: No se proporcionó número de teléfono, saltando envío de WhatsApp');
+    }
 
     return NextResponse.json(
       { 

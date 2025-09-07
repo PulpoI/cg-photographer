@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { CheckCircle, ArrowLeft, Mail, Clock } from "lucide-react";
+import { CheckCircle, ArrowLeft, Mail, Clock, MessageCircle } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import WhatsAppFloat from "@/components/shared/whatsapp-float";
@@ -55,6 +55,16 @@ export default function CheckoutSuccessPage() {
                       <p className="font-medium text-green-800">Email de confirmación</p>
                       <p className="text-sm text-green-700">
                         Hemos enviado un email de confirmación a tu correo electrónico con todos los detalles de tu solicitud.
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-3">
+                    <MessageCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <p className="font-medium text-green-800">Mensaje de WhatsApp</p>
+                      <p className="text-sm text-green-700">
+                        Si proporcionaste tu número de teléfono, también recibiste un mensaje de WhatsApp con el resumen de tu presupuesto.
                       </p>
                     </div>
                   </div>
