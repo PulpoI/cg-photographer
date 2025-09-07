@@ -98,14 +98,14 @@ export class WhatsAppAPI {
     const { nombre, items, total } = data;
     const totalARS = Math.round(total * 1300); // Usar tasa actual
 
-    let message = `¡Hola ${nombre}! 👋\n\n`;
-    message += `¡Muchas gracias por contactarnos y solicitar un presupuesto! 🙏\n\n`;
+    let message = `¡Hola ${nombre}!\n\n`;
+    message += `¡Muchas gracias por contactarnos y solicitar un presupuesto!\n\n`;
     message += `Hemos recibido tu solicitud y queremos agradecerte por confiar en nosotros. Tu consulta es muy importante para nosotros.\n\n`;
-    message += `📋 *Resumen de tu solicitud:*\n`;
+    message += `*Resumen de tu solicitud:*\n`;
     message += `• Servicios: ${items.length} ${items.length === 1 ? 'servicio' : 'servicios'}\n`;
     message += `• Total estimado: US$${total.toLocaleString('en-US')} ($${totalARS.toLocaleString('es-AR')} ARS)\n\n`;
     
-    message += `📸 *Servicios solicitados:*\n`;
+    message += `*Servicios solicitados:*\n`;
     items.forEach((item, index) => {
       const priceARS = Math.round(item.priceUSD * 1300);
       message += `${index + 1}. *${item.subServiceTitle} - ${item.name}*\n`;
@@ -113,13 +113,13 @@ export class WhatsAppAPI {
       message += `   US$${item.priceUSD.toLocaleString('en-US')} ($${priceARS.toLocaleString('es-AR')} ARS)\n\n`;
     });
     
-    message += `💰 *Total: US$${total.toLocaleString('en-US')} ($${totalARS.toLocaleString('es-AR')} ARS)*\n\n`;
-    message += `⏰ *¿Qué sigue ahora?*\n`;
+    message += `*Total: US$${total.toLocaleString('en-US')} ($${totalARS.toLocaleString('es-AR')} ARS)*\n\n`;
+    message += `*¿Qué sigue ahora?*\n`;
     message += `• Te enviaremos un email de confirmación con todos los detalles\n`;
     message += `• Nos pondremos en contacto contigo dentro de las próximas 24 horas\n`;
     message += `• Te enviaremos un presupuesto detallado con todas las opciones disponibles\n\n`;
     message += `Si tienes alguna pregunta urgente, puedes responder a este mensaje o contactarnos directamente.\n\n`;
-    message += `¡Saludos cordiales! 📸✨\n`;
+    message += `¡Saludos cordiales!\n`;
     message += `Camila - Fotógrafa Profesional`;
 
     return message;

@@ -85,9 +85,7 @@ export async function POST(request: NextRequest) {
       `;
     }).join('');
 
-    // 3. Enviar email de presupuesto al administrador (TEMPORALMENTE DESACTIVADO)
-    console.log('📧 EMAIL ADMIN: Desactivado temporalmente para debug');
-    /*
+    // 3. Enviar email de presupuesto al administrador
     const sendSmtpEmail = new brevo.SendSmtpEmail();
     sendSmtpEmail.to = [{ 
       email: process.env.BREVO_ADMIN_EMAIL || process.env.BREVO_SENDER_EMAIL!, 
@@ -144,16 +142,29 @@ export async function POST(request: NextRequest) {
             <strong>💡 Tip:</strong> Puedes responder directamente a este email para contactar al cliente.
           </p>
         </div>
+        
+        ${telefono ? `
+        <div style="margin-top: 20px; padding: 20px; background-color: #f0f9ff; border-radius: 8px; text-align: center;">
+          <h3 style="color: #1e40af; margin-top: 0;">📱 Enviar WhatsApp</h3>
+          <p style="color: #1e40af; margin-bottom: 20px;">
+            Envía un mensaje de WhatsApp al cliente con el resumen del presupuesto
+          </p>
+          <a href="https://wa.me/${telefono.replace(/[\s\-\(\)]/g, '').replace('+', '')}?text=${encodeURIComponent(whatsappAPI.generateQuoteMessage({nombre, items, total}))}" 
+             style="background-color: #25d366; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block;">
+            📱 Enviar WhatsApp a ${nombre}
+          </a>
+          <p style="color: #64748b; font-size: 12px; margin-top: 10px;">
+            Teléfono: ${telefono}
+          </p>
+        </div>
+        ` : ''}
       </div>
     `;
     sendSmtpEmail.replyTo = { email: email, name: nombre };
 
     await apiInstance.sendTransacEmail(sendSmtpEmail);
-    */
 
-    // 4. Enviar email de confirmación al cliente (TEMPORALMENTE DESACTIVADO)
-    console.log('📧 EMAIL CLIENTE: Desactivado temporalmente para debug');
-    /*
+    // 4. Enviar email de confirmación al cliente
     const confirmationEmail = new brevo.SendSmtpEmail();
     confirmationEmail.to = [{ email: email, name: nombre }];
     confirmationEmail.sender = { email: process.env.BREVO_SENDER_EMAIL!, name: process.env.BREVO_SENDER_NAME };
@@ -232,44 +243,24 @@ export async function POST(request: NextRequest) {
     `;
 
     await apiInstance.sendTransacEmail(confirmationEmail);
-    */
 
-    // 5. Enviar mensaje de WhatsApp automáticamente si hay teléfono
-    console.log('📱 WHATSAPP DEBUG: Iniciando proceso de envío...');
-    console.log('📱 WHATSAPP DEBUG: Teléfono recibido:', telefono);
+    // 5. WhatsApp automático (DRAFT - Desactivado temporalmente)
+    // TODO: Reactivar cuando se resuelva el conflicto con WhatsApp personal
+    console.log('📱 WHATSAPP AUTO: Desactivado temporalmente (DRAFT)');
+    console.log('📱 WHATSAPP AUTO: Generando mensaje para envío manual...');
     
     if (telefono) {
-      try {
-        console.log('📱 WHATSAPP DEBUG: Procesando número de teléfono...');
-        const formattedPhone = whatsappAPI.formatPhoneNumber(telefono);
-        console.log('📱 WHATSAPP DEBUG: Número formateado:', formattedPhone);
-        
-        console.log('📱 WHATSAPP DEBUG: Generando mensaje...');
-        const whatsappMessage = whatsappAPI.generateQuoteMessage({
-          nombre,
-          items,
-          total
-        });
-        console.log('📱 WHATSAPP DEBUG: Mensaje generado:', whatsappMessage);
-        
-        console.log('📱 WHATSAPP DEBUG: Enviando mensaje...');
-        console.log('📱 WHATSAPP DEBUG: Access Token:', process.env.WHATSAPP_ACCESS_TOKEN ? '✅ Configurado' : '❌ No configurado');
-        console.log('📱 WHATSAPP DEBUG: Phone Number ID:', process.env.WHATSAPP_PHONE_NUMBER_ID ? '✅ Configurado' : '❌ No configurado');
-        
-        const result = await whatsappAPI.sendMessage(formattedPhone, whatsappMessage);
-        console.log('✅ WHATSAPP SUCCESS: Mensaje enviado exitosamente');
-        console.log('✅ WHATSAPP SUCCESS: Respuesta de la API:', JSON.stringify(result, null, 2));
-        console.log('✅ WHATSAPP SUCCESS: Para:', formattedPhone);
-        
-      } catch (whatsappError: any) {
-        console.error('❌ WHATSAPP ERROR: Error al enviar mensaje');
-        console.error('❌ WHATSAPP ERROR: Mensaje de error:', whatsappError.message);
-        console.error('❌ WHATSAPP ERROR: Stack completo:', whatsappError.stack);
-        console.error('❌ WHATSAPP ERROR: Respuesta completa:', whatsappError.response?.data || 'No hay datos de respuesta');
-        // No fallar la operación si WhatsApp falla
-      }
+      const whatsappMessage = whatsappAPI.generateQuoteMessage({
+        nombre,
+        items,
+        total
+      });
+      console.log('📱 WHATSAPP MANUAL: Mensaje generado para envío manual');
+      console.log('📱 WHATSAPP MANUAL: Cliente:', nombre);
+      console.log('📱 WHATSAPP MANUAL: Teléfono:', telefono);
+      console.log('📱 WHATSAPP MANUAL: Mensaje:', whatsappMessage);
     } else {
-      console.log('ℹ️ WHATSAPP INFO: No se proporcionó número de teléfono, saltando envío de WhatsApp');
+      console.log('ℹ️ WHATSAPP MANUAL: No se proporcionó número de teléfono');
     }
 
     return NextResponse.json(
