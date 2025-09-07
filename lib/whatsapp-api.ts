@@ -2,6 +2,7 @@
 // Documentación: https://developers.facebook.com/docs/whatsapp/cloud-api
 
 interface WhatsAppMessage {
+  messaging_product: string;
   to: string;
   type: 'text';
   text: {
@@ -33,6 +34,7 @@ export class WhatsAppAPI {
 
   async sendMessage(to: string, message: string): Promise<WhatsAppResponse> {
     const payload: WhatsAppMessage = {
+      messaging_product: 'whatsapp',
       to: to,
       type: 'text',
       text: {
@@ -40,6 +42,9 @@ export class WhatsAppAPI {
       }
     };
 
+    console.log('📱 WHATSAPP API: URL:', this.baseUrl);
+    console.log('📱 WHATSAPP API: Payload:', JSON.stringify(payload, null, 2));
+    
     const response = await fetch(this.baseUrl, {
       method: 'POST',
       headers: {
@@ -49,12 +54,18 @@ export class WhatsAppAPI {
       body: JSON.stringify(payload)
     });
 
+    console.log('📱 WHATSAPP API: Status:', response.status);
+    console.log('📱 WHATSAPP API: Headers:', Object.fromEntries(response.headers.entries()));
+    
     if (!response.ok) {
       const error = await response.text();
+      console.error('📱 WHATSAPP API: Error response:', error);
       throw new Error(`WhatsApp API error: ${error}`);
     }
 
-    return await response.json();
+    const result = await response.json();
+    console.log('📱 WHATSAPP API: Success response:', JSON.stringify(result, null, 2));
+    return result;
   }
 
   formatPhoneNumber(phone: string): string {
