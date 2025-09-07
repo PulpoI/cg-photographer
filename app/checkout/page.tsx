@@ -32,7 +32,7 @@ export default function CheckoutPage() {
     // Validar formulario
     if (!formData.nombre || !formData.email) {
       const errorMsg = encodeURIComponent("Por favor completa los campos requeridos");
-      window.location.href = `/checkout/error?message=${errorMsg}`;
+      window.location.href = `/checkout/error/${errorMsg}`;
       return;
     }
 
@@ -66,7 +66,7 @@ export default function CheckoutPage() {
     } catch (error: any) {
       // Redirigir a página de error con el mensaje
       const errorMsg = encodeURIComponent(error.message || "Error al enviar el presupuesto");
-      window.location.href = `/checkout/error?message=${errorMsg}`;
+      window.location.href = `/checkout/error/${errorMsg}`;
     } finally {
       setIsSubmitting(false);
     }

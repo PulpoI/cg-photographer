@@ -4,12 +4,16 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { XCircle, ArrowLeft, RefreshCw, Mail } from "lucide-react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 import WhatsAppFloat from "@/components/shared/whatsapp-float";
 
-export default function CheckoutErrorPage() {
-  const searchParams = useSearchParams();
-  const errorMessage = searchParams.get('message') || 'Ha ocurrido un error inesperado';
+interface ErrorPageProps {
+  params: {
+    message: string;
+  };
+}
+
+export default function CheckoutErrorPage({ params }: ErrorPageProps) {
+  const errorMessage = decodeURIComponent(params.message || 'Ha ocurrido un error inesperado');
 
   return (
     <div className="min-h-screen bg-coral-light pt-20">
