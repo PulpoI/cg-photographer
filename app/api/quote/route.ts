@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import * as brevo from '@getbrevo/brevo';
-import { EXCHANGE_RATES } from '@/lib/exchange-rates';
+import { EXCHANGE_RATES, getFormattedDollarRate } from '@/lib/exchange-rates';
 import { whatsappAPI } from '@/lib/whatsapp-api';
 
 // Configurar el cliente de Brevo
@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
   try {
     console.log('🚀 QUOTE API: Iniciando procesamiento de presupuesto...');
     const body = await request.json();
-    const { nombre, email, telefono, mensaje, items, total } = body;
+    const { nombre, email, telefono, mensaje, items, total, selectedCurrency } = body;
     
     console.log('📋 QUOTE API: Datos recibidos:');
     console.log('📋 QUOTE API: - Nombre:', nombre);
@@ -23,6 +23,7 @@ export async function POST(request: NextRequest) {
     console.log('📋 QUOTE API: - Teléfono:', telefono);
     console.log('📋 QUOTE API: - Items:', items?.length || 0);
     console.log('📋 QUOTE API: - Total:', total);
+    console.log('📋 QUOTE API: - Moneda seleccionada:', selectedCurrency || 'ARS');
 
     // Validar los datos requeridos
     if (!nombre || !email) {
@@ -104,6 +105,8 @@ export async function POST(request: NextRequest) {
           <p><strong>Nombre:</strong> ${nombre}</p>
           <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
           ${telefono ? `<p><strong>Teléfono:</strong> ${telefono}</p>` : ''}
+          <p><strong>Moneda seleccionada:</strong> ${selectedCurrency || 'ARS'}</p>
+          <p><strong>Valor del dólar actual:</strong> ${getFormattedDollarRate()}</p>
         </div>
         
         <div style="background-color: #fff; padding: 20px; border-left: 4px solid #f59e0b; margin: 20px 0;">
@@ -137,11 +140,18 @@ export async function POST(request: NextRequest) {
         </div>
         ` : ''}
         
-        <div style="margin-top: 30px; padding: 15px; background-color: #e5f3ff; border-radius: 8px;">
-          <p style="margin: 0; color: #0066cc; font-size: 14px;">
-            <strong>💡 Tip:</strong> Puedes responder directamente a este email para contactar al cliente.
-          </p>
-        </div>
+             <div style="margin-top: 30px; padding: 15px; background-color: #e5f3ff; border-radius: 8px;">
+               <p style="margin: 0; color: #0066cc; font-size: 14px;">
+                 <strong>💡 Tip:</strong> Puedes responder directamente a este email para contactar al cliente.
+               </p>
+             </div>
+
+             <div style="margin-top: 20px; padding: 15px; background-color: #fff3cd; border-radius: 8px;">
+               <p style="margin: 0; color: #856404; font-size: 14px;">
+                 <strong>⏰ Recordatorio:</strong> El presupuesto que envíes será válido por 30 días a partir de hoy. 
+                 Informa al cliente sobre esta validez en tu respuesta.
+               </p>
+             </div>
         
         ${telefono ? `
         <div style="margin-top: 20px; padding: 20px; background-color: #f0f9ff; border-radius: 8px; text-align: center;">
@@ -149,7 +159,7 @@ export async function POST(request: NextRequest) {
           <p style="color: #1e40af; margin-bottom: 20px;">
             Envía un mensaje de WhatsApp al cliente con el resumen del presupuesto
           </p>
-          <a href="https://wa.me/${telefono.replace(/[\s\-\(\)]/g, '').replace('+', '')}?text=${encodeURIComponent(whatsappAPI.generateQuoteMessage({nombre, items, total}))}" 
+          <a href="https://wa.me/${telefono.replace(/[\s\-\(\)]/g, '').replace('+', '')}?text=${encodeURIComponent(whatsappAPI.generateQuoteMessage({nombre, items, total, selectedCurrency: selectedCurrency || 'ARS'}))}" 
              style="background-color: #25d366; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block;">
             📱 Enviar WhatsApp a ${nombre}
           </a>
@@ -188,7 +198,7 @@ export async function POST(request: NextRequest) {
           <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin: 25px 0;">
             <h3 style="color: #333; margin-top: 0;">📋 Resumen de tu solicitud:</h3>
             <p style="margin: 5px 0;"><strong>Servicios:</strong> ${items.length} ${items.length === 1 ? 'servicio' : 'servicios'}</p>
-            <p style="margin: 5px 0;"><strong>Total estimado:</strong> US$${total.toLocaleString('en-US')} ($${Math.round(total * EXCHANGE_RATES.USD_TO_ARS).toLocaleString('es-AR')} ARS)</p>
+            <p style="margin: 5px 0;"><strong>Total estimado:</strong> ${selectedCurrency === 'ARS' ? `$${Math.round(total * EXCHANGE_RATES.USD_TO_ARS).toLocaleString('es-AR')} ARS` : `US$${total.toLocaleString('en-US')}`}</p>
             <p style="margin: 5px 0;"><strong>Email:</strong> ${email}</p>
           </div>
           
@@ -217,9 +227,60 @@ export async function POST(request: NextRequest) {
           </div>
           
           <p style="color: #666; line-height: 1.6; margin-bottom: 25px;">
-            Nos pondremos en contacto contigo lo antes posible, generalmente dentro de las próximas 24 horas. 
+            Nos pondremos en contacto contigo lo antes posible, generalmente dentro de las próximas 24 horas.
             Te enviaremos un presupuesto detallado con todas las opciones disponibles.
           </p>
+          
+          <div style="background-color: #fff3cd; padding: 20px; border-left: 4px solid #f59e0b; margin: 20px 0; border-radius: 8px;">
+            <h3 style="color: #856404; margin-top: 0;">⏰ Validez del Presupuesto</h3>
+            <p style="color: #856404; margin: 0; line-height: 1.6;">
+              <strong>Este presupuesto es válido por 30 días</strong> a partir de la fecha de envío. 
+              Si no contratas el servicio dentro de este plazo, el presupuesto perderá validez y 
+              deberás solicitar uno nuevo.
+            </p>
+          </div>
+
+          <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <h3 style="color: #333; margin-top: 0;">💰 Opciones de Pago Detalladas</h3>
+            <p style="color: #666; margin-bottom: 15px;">
+              Te ofrecemos diferentes opciones de pago para que elijas la que mejor se adapte a tu situación:
+            </p>
+            
+            <div style="background-color: #fff; padding: 15px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid #28a745;">
+              <h4 style="color: #28a745; margin-top: 0;">🎯 Corto Plazo (Recomendado)</h4>
+              <p style="margin: 5px 0;"><strong>Plazo:</strong> 2 meses</p>
+              <p style="margin: 5px 0;"><strong>Interés:</strong> 0% (Sin intereses)</p>
+              <p style="margin: 5px 0;"><strong>Depósito:</strong> 15% al contratar</p>
+              <p style="margin: 5px 0;"><strong>Monto final:</strong> 100% del precio del servicio</p>
+            </div>
+
+            <div style="background-color: #fff; padding: 15px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid #ffc107;">
+              <h4 style="color: #856404; margin-top: 0;">📅 Mediano Plazo</h4>
+              <p style="margin: 5px 0;"><strong>Plazo:</strong> 6 meses</p>
+              <p style="margin: 5px 0;"><strong>Interés:</strong> 25%</p>
+              <p style="margin: 5px 0;"><strong>Depósito:</strong> 15% al contratar</p>
+              <p style="margin: 5px 0;"><strong>Monto final:</strong> 130% del precio del servicio</p>
+            </div>
+
+            <div style="background-color: #fff; padding: 15px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid #dc3545;">
+              <h4 style="color: #dc3545; margin-top: 0;">📆 Largo Plazo</h4>
+              <p style="margin: 5px 0;"><strong>Plazo:</strong> 12 meses</p>
+              <p style="margin: 5px 0;"><strong>Interés:</strong> 40%</p>
+              <p style="margin: 5px 0;"><strong>Depósito:</strong> 15% al contratar</p>
+              <p style="margin: 5px 0;"><strong>Monto final:</strong> 150% del precio del servicio</p>
+            </div>
+
+            <div style="background-color: #e7f3ff; padding: 15px; border-radius: 8px; text-align: center;">
+              <p style="margin: 0; color: #0066cc; font-weight: bold;">
+                💡 Ejemplo: Si el servicio cuesta $350.000 ARS
+              </p>
+              <div style="display: flex; justify-content: space-around; margin-top: 10px; font-size: 14px;">
+                <div style="color: #28a745;"><strong>Corto:</strong> $350.000</div>
+                <div style="color: #856404;"><strong>Mediano:</strong> $455.000</div>
+                <div style="color: #dc3545;"><strong>Largo:</strong> $525.000</div>
+              </div>
+            </div>
+          </div>
           
           <div style="text-align: center; margin: 30px 0;">
             <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'https://tu-sitio.com'}" 
@@ -253,11 +314,13 @@ export async function POST(request: NextRequest) {
       const whatsappMessage = whatsappAPI.generateQuoteMessage({
         nombre,
         items,
-        total
+        total,
+        selectedCurrency: selectedCurrency || 'ARS'
       });
       console.log('📱 WHATSAPP MANUAL: Mensaje generado para envío manual');
       console.log('📱 WHATSAPP MANUAL: Cliente:', nombre);
       console.log('📱 WHATSAPP MANUAL: Teléfono:', telefono);
+      console.log('📱 WHATSAPP MANUAL: Moneda:', selectedCurrency || 'ARS');
       console.log('📱 WHATSAPP MANUAL: Mensaje:', whatsappMessage);
     } else {
       console.log('ℹ️ WHATSAPP MANUAL: No se proporcionó número de teléfono');

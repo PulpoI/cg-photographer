@@ -129,7 +129,7 @@ export const services: Record<string, Service> = {
         packages: [
           {
             name: 'Clásico',
-            priceUSD: 170,
+            priceUSD: 130,
             features: [
               '1 día de sesión en Estudio y/o Exterior',
               'Duración de 4 horas',
@@ -141,7 +141,7 @@ export const services: Record<string, Service> = {
           },
           {
             name: 'Dorado',
-            priceUSD: 300,
+            priceUSD: 200,
             features: [
               '2 días de sesión en Estudio y/o Exterior',
               'Duración de 4 horas (por sesión)',

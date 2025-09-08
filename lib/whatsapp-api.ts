@@ -94,30 +94,67 @@ export class WhatsAppAPI {
       priceUSD: number;
     }>;
     total: number;
+    selectedCurrency: string;
   }): string {
-    const { nombre, items, total } = data;
-    const totalARS = Math.round(total * 1300); // Usar tasa actual
+    const { nombre, items, total, selectedCurrency } = data;
+    const { EXCHANGE_RATES } = require('@/lib/exchange-rates');
+    
+    // Calcular precios según la moneda seleccionada
+    const formatPrice = (priceUSD: number) => {
+      if (selectedCurrency === 'ARS') {
+        const priceARS = Math.round(priceUSD * EXCHANGE_RATES.USD_TO_ARS);
+        return `$${priceARS.toLocaleString('es-AR')} ARS`;
+      } else {
+        return `US$${priceUSD.toLocaleString('en-US')}`;
+      }
+    };
 
     let message = `¡Hola ${nombre}!\n\n`;
     message += `¡Muchas gracias por contactarnos y solicitar un presupuesto!\n\n`;
     message += `Hemos recibido tu solicitud y queremos agradecerte por confiar en nosotros. Tu consulta es muy importante para nosotros.\n\n`;
     message += `*Resumen de tu solicitud:*\n`;
     message += `• Servicios: ${items.length} ${items.length === 1 ? 'servicio' : 'servicios'}\n`;
-    message += `• Total estimado: US$${total.toLocaleString('en-US')} ($${totalARS.toLocaleString('es-AR')} ARS)\n\n`;
+    message += `• Total estimado: ${formatPrice(total)}\n\n`;
     
     message += `*Servicios solicitados:*\n`;
     items.forEach((item, index) => {
-      const priceARS = Math.round(item.priceUSD * 1300);
       message += `${index + 1}. *${item.subServiceTitle} - ${item.name}*\n`;
       message += `   ${item.serviceTitle}\n`;
-      message += `   US$${item.priceUSD.toLocaleString('en-US')} ($${priceARS.toLocaleString('es-AR')} ARS)\n\n`;
+      message += `   ${formatPrice(item.priceUSD)}\n\n`;
     });
     
-    message += `*Total: US$${total.toLocaleString('en-US')} ($${totalARS.toLocaleString('es-AR')} ARS)*\n\n`;
+    message += `*Total: ${formatPrice(total)}*\n\n`;
     message += `*¿Qué sigue ahora?*\n`;
     message += `• Te enviaremos un email de confirmación con todos los detalles\n`;
     message += `• Nos pondremos en contacto contigo dentro de las próximas 24 horas\n`;
     message += `• Te enviaremos un presupuesto detallado con todas las opciones disponibles\n\n`;
+    message += `*⏰ IMPORTANTE:*\n`;
+    message += `El presupuesto será válido por 30 días a partir de hoy. Si no contratas el servicio dentro de este plazo, deberás solicitar uno nuevo.\n\n`;
+    
+    message += `*💰 OPCIONES DE PAGO:*\n\n`;
+    message += `*🎯 Corto Plazo (Recomendado):*\n`;
+    message += `• Plazo: 2 meses\n`;
+    message += `• Interés: 0% (Sin intereses)\n`;
+    message += `• Depósito: 15% al contratar\n`;
+    message += `• Monto final: 100% del precio\n\n`;
+    
+    message += `*📅 Mediano Plazo:*\n`;
+    message += `• Plazo: 6 meses\n`;
+    message += `• Interés: 25%\n`;
+    message += `• Depósito: 15% al contratar\n`;
+    message += `• Monto final: 130% del precio\n\n`;
+    
+    message += `*📆 Largo Plazo:*\n`;
+    message += `• Plazo: 12 meses\n`;
+    message += `• Interés: 40%\n`;
+    message += `• Depósito: 15% al contratar\n`;
+    message += `• Monto final: 150% del precio\n\n`;
+    
+    message += `*💡 Ejemplo: Si el servicio cuesta $350.000 ARS*\n`;
+    message += `• Corto: $350.000\n`;
+    message += `• Mediano: $455.000\n`;
+    message += `• Largo: $525.000\n\n`;
+    
     message += `Si tienes alguna pregunta urgente, puedes responder a este mensaje o contactarnos directamente.\n\n`;
     message += `¡Saludos cordiales!\n`;
     message += `Camila - Fotógrafa Profesional`;

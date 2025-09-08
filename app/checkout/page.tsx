@@ -11,9 +11,11 @@ import Link from "next/link";
 import { useState } from "react";
 import PriceDisplay from "@/components/shared/price-display";
 import { Loader2 } from "lucide-react";
+import { useCurrency } from "@/contexts/currency-context";
 
 export default function CheckoutPage() {
   const { items, removeItem, total, clearCart } = useCart();
+  const { selectedCurrency } = useCurrency();
   const [formData, setFormData] = useState({
     nombre: "",
     email: "",
@@ -48,7 +50,8 @@ export default function CheckoutPage() {
         body: JSON.stringify({
           ...formData,
           items: items,
-          total: total
+          total: total,
+          selectedCurrency: selectedCurrency
         }),
       });
 

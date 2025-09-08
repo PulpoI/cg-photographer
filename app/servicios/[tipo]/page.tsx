@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import { services } from '@/lib/services-data'
 import PageHero from '@/components/shared/page-hero'
 import ServiceContent from '@/components/services/service-content'
+import PaymentInfo from '@/components/services/payment-info'
 import MainContent from '@/components/home/main-content'
 import AboutTestimonials from '@/components/about/about-testimonials'
 import Faqs from '@/components/shared/faqs'
@@ -28,7 +29,8 @@ export default function ServicePage({ params }: ServicePageProps) {
       />
       <MainContent />
       <ServiceContent service={service} />
-      <AboutTestimonials />
+      <PaymentInfo />
+      {/* <AboutTestimonials /> */}
       <Faqs />
     </>
   )

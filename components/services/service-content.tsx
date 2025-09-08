@@ -15,6 +15,7 @@ import { Check } from "lucide-react";
 import { useCart } from "@/contexts/cart-context";
 import { Button } from "@/components/ui/button";
 import PriceDisplay from "@/components/shared/price-display";
+import ServiceDisclaimer from "./service-disclaimer";
 
 interface ServiceContentProps {
   service: Service;
@@ -214,6 +215,10 @@ export default function ServiceContent({ service }: ServiceContentProps) {
             ))}
           </Tabs>
 
+          {/* Disclaimer */}
+          <div className="mt-12">
+            <ServiceDisclaimer />
+          </div>
         
         </div>
       </div>

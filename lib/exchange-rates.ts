@@ -2,7 +2,7 @@
 // Actualiza este valor cuando cambie el dólar
 
 export const EXCHANGE_RATES = {
-  USD_TO_ARS: 1300,
+  USD_TO_ARS: parseInt(process.env.EXCHANGE_RATE_USD_TO_ARS || '1300'),
   // Agregar más monedas aquí cuando sea necesario
   // USD_TO_EUR: 0.85,
   // USD_TO_BRL: 5.2,
@@ -31,4 +31,9 @@ export function convertUSDToCurrency(amountUSD: number, targetCurrency: 'ARS'): 
     default:
       return amountUSD;
   }
+}
+
+// Función para obtener el valor del dólar formateado
+export function getFormattedDollarRate(): string {
+  return `US$1 = $${EXCHANGE_RATES.USD_TO_ARS.toLocaleString('es-AR')} ARS`;
 }
