@@ -1,7 +1,7 @@
 "use client";
 
 import { useCurrency } from "@/contexts/currency-context";
-import { getFormattedPrice } from "@/lib/currency";
+import { convertPrice, formatPrice } from "@/lib/currency";
 import { useState, useEffect } from "react";
 
 interface PriceDisplayProps {
@@ -10,7 +10,7 @@ interface PriceDisplayProps {
 }
 
 export default function PriceDisplay({ priceUSD, className = "" }: PriceDisplayProps) {
-  const { selectedCurrency } = useCurrency();
+  const { selectedCurrency, exchangeRate } = useCurrency();
   const [isClient, setIsClient] = useState(false);
   
   useEffect(() => {
@@ -27,9 +27,14 @@ export default function PriceDisplay({ priceUSD, className = "" }: PriceDisplayP
     );
   }
   
+  // Usar el precio del dólar dinámico para la conversión
+  const convertedPrice = selectedCurrency === 'USD' 
+    ? priceUSD 
+    : Math.round(priceUSD * exchangeRate);
+  
   return (
     <span className={className}>
-      {getFormattedPrice(priceUSD, selectedCurrency)}
+      {formatPrice(convertedPrice, selectedCurrency)}
     </span>
   );
 }

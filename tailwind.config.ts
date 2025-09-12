@@ -71,7 +71,7 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ['var(--font-sans)'],
+        sans: ['var(--font-dm-sans)', 'var(--font-sans)', 'sans-serif'],
         heading: ['var(--font-heading)'],
         bromello: ['bromello', 'sans-serif'],
       },

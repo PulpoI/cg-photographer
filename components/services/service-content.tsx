@@ -83,6 +83,35 @@ export default function ServiceContent({ service }: ServiceContentProps) {
     return false;
   };
 
+  const scrollToTabsSection = () => {
+    setTimeout(() => {
+      const tabsSection = document.querySelector("[data-tabs-section]");
+      if (tabsSection) {
+        const navbarOffset = 100; // Account for sticky navbar and some extra space
+        const elementPosition =
+          tabsSection.getBoundingClientRect().top +
+          window.pageYOffset -
+          navbarOffset;
+
+        // Use Lenis if available, otherwise fallback to native scroll
+        const lenis = (window as any).lenis;
+
+        if (lenis && typeof lenis.scrollTo === "function") {
+          lenis.scrollTo(elementPosition, {
+            duration: 1.2,
+            easing: (t: number) =>
+              Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          });
+        } else {
+          window.scrollTo({
+            top: elementPosition,
+            behavior: "smooth",
+          });
+        }
+      }
+    }, 100); // Reduced delay for better responsiveness
+  };
+
   useEffect(() => {
     // Check if there's a hash in the URL to set the active tab
     const hash = window.location.hash.substring(1);
@@ -124,7 +153,10 @@ export default function ServiceContent({ service }: ServiceContentProps) {
 
           <Tabs
             value={activeTab}
-            onValueChange={setActiveTab}
+            onValueChange={(value) => {
+              setActiveTab(value);
+              scrollToTabsSection();
+            }}
             className="space-y-8 "
             data-tabs-section
           >
